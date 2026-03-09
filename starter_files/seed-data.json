@@ -1,0 +1,974 @@
+{
+  "hackathons": [
+    {
+      "id": "7d9e86c9-16bc-4113-85d3-8401f56784ec",
+      "name": "Off the Grid 2025",
+      "tagline": null,
+      "description": "Off the Grid is Blackbaud's annual innovation code competition when Blackbaud employees step outside of their day-to-day roles to innovate on creative solutions to solve problems in the social good community.",
+      "logo_url": "https://companieslogo.com/img/orig/BLKB-688368bc.png?t=1720244491",
+      "lede_image_url": "https://tfhrawzyekztjzqltehb.supabase.co/storage/v1/object/public/hackathon-images/uploads/1766074728412-z9uh3crmeq.png",
+      "registration_open": "2025-03-20T23:59:59+00:00",
+      "submission_deadline": "2025-03-26T17:00:00+00:00",
+      "judging_start": "2025-03-26T17:00:00+00:00",
+      "judging_end": "2025-03-28T23:59:59+00:00",
+      "rules": "<p><strong>Rules</strong></p><p>Teams can have 1-6 members</p><p>All code must be written during the hackathon</p><p>You may use open source libraries and APIs</p><p>Projects must align with Blackbaud's mission</p><p>All submissions must include a demo video</p><p></p>",
+      "faq": [
+        {
+          "question": "Who can participate?",
+          "answer": "All Blackbaud employees are eligible to participate."
+        },
+        {
+          "question": "Can I work alone?",
+          "answer": "Yes, individual submissions are welcome."
+        },
+        {
+          "question": "What should I build?",
+          "answer": "Anything that could benefit nonprofits or improve Blackbaud products."
+        }
+      ],
+      "swag": "<img class=\"max-w-full h-auto rounded-md my-2\" src=\"https://app.fulfillengine.com/images/1d333615-2dfe-4d64-b4db-458a71b7636e/blackbaud-merchandise/1d333615-2dfe-4d64-b4db-458a71b7636e-3276732-front-black-product.png\"><p>The <a target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-primary underline\" href=\"https://blackbaud-merchandise.checkoutstores.com/\"><strong><u>Blackbaud Merchandise Store</u></strong></a> offers many branded items that are ready to print on demand. Purchases can be made with a credit card or gift code. All purchases made with Blackbaud funds must be made in accordance with Blackbaud's policies, which can be found in the <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"text-primary underline\" href=\"https://blackbaud.sharepoint.com/sites/PolicyCenter/SitePages/Employee-Handbook.aspx\"><u>Employee Handbook</u></a> on the hub.&nbsp;</p><p>To request gift codes, please email <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"text-primary underline\" href=\"mailto:info@printyourcause.com\">info@printyourcause.com</a> and include the names, email addresses, and any message for recipients. Gift codes will be sent directly to recipients and the requestor will receive an invoice for the gift code amount at that time. If merchandise is purchased as a gift for Blackbaud employees or external parties, it must adhere to the <a target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-primary underline\" href=\"https://blackbaud.sharepoint.com/:b:/s/PolicyCenter/EVeRt-LT2iBBpjuL0R8DSCQBYGgVD17EjG05wdg18WsFiw?e=LY3z25\"><u>Gifts and Entertainment policy</u></a> documented in the Employee Handbook.</p><p>Please note that purchases from this <a target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-primary underline\" href=\"https://blackbaud-merchandise.checkoutstores.com/\"><u>Blackbaud Merchandise Store</u></a> that are shipped outside the US may incur higher shipping and customs fees. Please see below for recommend vendors outside US.</p><p>You can direct any questions about the store, gift codes, or ordering items that aren't already included in the store to <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"text-primary underline\" href=\"mailto:info@printyourcause.com\"><u>info@printyourcause.com</u></a></p><p><a target=\"self\" rel=\"noopener noreferrer nofollow\" class=\"text-primary underline fui-Link l_IsvFc_bAiCW ___1fq7916 f2hkw1w f3rmtva f1ewtqcl fyind8e f1k6fduh f1w7gpdv fk6fouc fjoy568 figsok6 f1s184ao f1mk8lai fnbmjn9 f1o700av f1iuv45f f1cmlufx f9n3di6 f1ids18y f1tx3yz7 f1deo86v f1eh06m1 f1iescvh fhgqx19 f1olyrje f1p93eir f1nev41a\" href=\"https://blackbaud-merchandise.checkoutstores.com/\"><br></a></p>",
+      "terms": "<p></p><p>By participating, you agree that any intellectual property created belongs to Blackbaud, Inc.</p>",
+      "created_at": "2025-12-18T16:19:56.266419+00:00",
+      "updated_at": "2025-12-22T20:14:37.718527+00:00"
+    }
+  ],
+  "tracks": [
+    {
+      "id": "4e40f5a9-bb28-4e7a-9794-edb606aa1ed5",
+      "hackathon_id": "7d9e86c9-16bc-4113-85d3-8401f56784ec",
+      "name": "AI Acceleration",
+      "tagline": "Navigate the AI depths",
+      "description": "Whether it's enhancing existing systems, leveraging data, or creating entirely new applications, this track is all about harnessing the power of AI to drive innovation.",
+      "icon": "Brain",
+      "background_image_url": "https://tfhrawzyekztjzqltehb.supabase.co/storage/v1/object/public/hackathon-images/uploads/1766076080209-uwwk1aofcx.png",
+      "sort_order": 0,
+      "created_at": "2025-12-18T16:19:56.875972+00:00"
+    },
+    {
+      "id": "6e475c25-dac6-4ca5-a899-88a83cc9c2df",
+      "hackathon_id": "7d9e86c9-16bc-4113-85d3-8401f56784ec",
+      "name": "Connected Systems",
+      "tagline": "Where ideas make waves",
+      "description": "Delve into the world of interconnected systems, where the focus is on creating seamless, efficient, and robust integrations between various Blackbaud technologies and platforms.",
+      "icon": "Network",
+      "background_image_url": "https://tfhrawzyekztjzqltehb.supabase.co/storage/v1/object/public/hackathon-images/uploads/1766076089511-jk65h1t9fr.png",
+      "sort_order": 1,
+      "created_at": "2025-12-18T16:19:57.137315+00:00"
+    },
+    {
+      "id": "9a082d55-d07b-4c68-80e8-6402d6602559",
+      "hackathon_id": "7d9e86c9-16bc-4113-85d3-8401f56784ec",
+      "name": "Just for Fun",
+      "tagline": "Stay cool with code",
+      "description": "Experiment with new ideas, technologies, and concepts! Participants are encouraged to think outside the box, take risks, and explore new possibilities for Blackbaud.",
+      "icon": "Sparkles",
+      "background_image_url": "https://tfhrawzyekztjzqltehb.supabase.co/storage/v1/object/public/hackathon-images/uploads/1766076098776-h8l65wyb4rg.png",
+      "sort_order": 2,
+      "created_at": "2025-12-18T16:19:57.353732+00:00"
+    }
+  ],
+  "awards": [
+    {
+      "id": "b7e44a7d-076c-4b3a-b83f-09da6f2a9847",
+      "hackathon_id": "7d9e86c9-16bc-4113-85d3-8401f56784ec",
+      "name": "Best Idea for Customers",
+      "description": "This prize honors the most innovative and impactful idea designed to enhance the experience of Blackbaud's customers. The winning team will present a solution that shows creativity, practicality, and a deep understanding of customer needs.",
+      "prize": "$1,000 gift card (to be split by team members)",
+      "icon": "Heart",
+      "background_image_url": "https://tfhrawzyekztjzqltehb.supabase.co/storage/v1/object/public/hackathon-images/uploads/1766075896100-1xpzjavo3zp.png",
+      "track_id": null,
+      "sort_order": 0,
+      "created_at": "2025-12-18T16:19:57.885904+00:00"
+    },
+    {
+      "id": "6656c191-6176-4eaf-b44f-1e25a72cfa5d",
+      "hackathon_id": "7d9e86c9-16bc-4113-85d3-8401f56784ec",
+      "name": "Best Idea for Blackbaud",
+      "description": "The winning idea will demonstrate a deep understanding of Blackbaud's goals and showcase how technology can be harnessed to enhance our solutions, streamline operations, or provide new value to our customers.",
+      "prize": "$1,000 gift card (to be split by team members)",
+      "icon": "Building2",
+      "background_image_url": "https://tfhrawzyekztjzqltehb.supabase.co/storage/v1/object/public/hackathon-images/uploads/1766075907147-by9d299twl9.png",
+      "track_id": null,
+      "sort_order": 1,
+      "created_at": "2025-12-18T16:19:58.033527+00:00"
+    },
+    {
+      "id": "55287e54-1277-473f-8d38-17b1e886e0f9",
+      "hackathon_id": "7d9e86c9-16bc-4113-85d3-8401f56784ec",
+      "name": "Most Impressive Teamwork",
+      "description": "Awarded to the team that demonstrates exceptional teamwork, communication, and synergy. The winning team will show how diverse skills and perspectives can come together to create something truly innovative.",
+      "prize": "$500 gift card (to be split by team members)",
+      "icon": "UsersRound",
+      "background_image_url": "https://tfhrawzyekztjzqltehb.supabase.co/storage/v1/object/public/hackathon-images/uploads/1766075915149-17u14y426ct.png",
+      "track_id": null,
+      "sort_order": 2,
+      "created_at": "2025-12-18T16:19:58.191912+00:00"
+    },
+    {
+      "id": "3d4f7b32-b43c-4a77-818d-4c2280e9a550",
+      "hackathon_id": "7d9e86c9-16bc-4113-85d3-8401f56784ec",
+      "name": "Most Impressive Engineering Feat",
+      "description": "Recognizes the project demonstrating exceptional technical innovation, complexity, and skill. This prize celebrates engineering excellence and cutting-edge technology.",
+      "prize": "$500 gift card (to be split by team members)",
+      "icon": "Cpu",
+      "background_image_url": "https://tfhrawzyekztjzqltehb.supabase.co/storage/v1/object/public/hackathon-images/uploads/1766075923312-x72i061dred.png",
+      "track_id": null,
+      "sort_order": 3,
+      "created_at": "2025-12-18T16:19:58.375232+00:00"
+    },
+    {
+      "id": "67ee4f28-f5d9-425b-a61b-67c02fd416e3",
+      "hackathon_id": "7d9e86c9-16bc-4113-85d3-8401f56784ec",
+      "name": "Vibe Coding Mini-Hackathon",
+      "description": "Special 2-day hackathon-within-a-hackathon!",
+      "prize": "The satisfaction of a job well done.",
+      "icon": "Zap",
+      "background_image_url": "https://tfhrawzyekztjzqltehb.supabase.co/storage/v1/object/public/hackathon-images/uploads/1766078775959-zda5mpw5u8q.png",
+      "track_id": null,
+      "sort_order": 4,
+      "created_at": "2025-12-18T17:26:42.168774+00:00"
+    }
+  ],
+  "judging_criteria": [
+    {
+      "id": "53e008f3-0b0f-4d79-8b25-6823fc21122f",
+      "hackathon_id": "7d9e86c9-16bc-4113-85d3-8401f56784ec",
+      "name": "Creativity",
+      "description": "How novel and creative is the solution?",
+      "bullet_points": [
+        "A new, unique or different take to a problem",
+        "Ambition",
+        "New skills learned"
+      ],
+      "icon": "Lightbulb",
+      "max_score": 10,
+      "weight": 1,
+      "sort_order": 0,
+      "created_at": "2025-12-18T16:58:20.099954+00:00"
+    },
+    {
+      "id": "8679a5ea-515d-49cc-9e20-f030c10492ff",
+      "hackathon_id": "7d9e86c9-16bc-4113-85d3-8401f56784ec",
+      "name": "Benefit to Customers",
+      "description": "Potential benefit to nonprofits and social good",
+      "bullet_points": [
+        "Benefits to a broad range of customers",
+        "Solves significant pain point",
+        "Customer adoption pathways"
+      ],
+      "icon": "Heart",
+      "max_score": 10,
+      "weight": 1.5,
+      "sort_order": 1,
+      "created_at": "2025-12-18T16:58:20.099954+00:00"
+    },
+    {
+      "id": "64ca9772-d3fa-4c44-83d9-e49af34846bd",
+      "hackathon_id": "7d9e86c9-16bc-4113-85d3-8401f56784ec",
+      "name": "Benefit to Blackbaud",
+      "description": "How does this benefit Blackbaud as an organization?",
+      "bullet_points": [
+        "Benefits to Blackbaud",
+        "Solves significant pain point",
+        "Expected outcomes (efficiencies gained, dollars saved, insights derived, etc.)"
+      ],
+      "icon": "Building",
+      "max_score": 10,
+      "weight": 1,
+      "sort_order": 2,
+      "created_at": "2025-12-18T16:58:20.099954+00:00"
+    },
+    {
+      "id": "fed0539f-1293-4244-b81d-43625c04dde6",
+      "hackathon_id": "7d9e86c9-16bc-4113-85d3-8401f56784ec",
+      "name": "Viability",
+      "description": "Can this be realistically implemented?",
+      "bullet_points": [
+        "Does Blackbaud have staff with the skills to implement and mature the idea?",
+        "What impact would this have on support and services?",
+        "Is new additional software/hardware required?"
+      ],
+      "icon": "Target",
+      "max_score": 10,
+      "weight": 1,
+      "sort_order": 3,
+      "created_at": "2025-12-18T16:58:20.099954+00:00"
+    },
+    {
+      "id": "0f1a6229-705f-4370-844e-21f62aa4729a",
+      "hackathon_id": "7d9e86c9-16bc-4113-85d3-8401f56784ec",
+      "name": "Use of Technology",
+      "description": "Quality of implementation and engineering",
+      "bullet_points": [
+        "Originality and the innovative use of technology",
+        "Clean and efficient code",
+        "Well-designed user experience"
+      ],
+      "icon": "Code",
+      "max_score": 10,
+      "weight": 0.5,
+      "sort_order": 4,
+      "created_at": "2025-12-18T16:58:20.099954+00:00"
+    }
+  ],
+  "milestones": [
+    {
+      "id": "3a6171f7-7b0a-44c9-976f-f28e8caa8dc2",
+      "hackathon_id": "7d9e86c9-16bc-4113-85d3-8401f56784ec",
+      "title": "Registration Opens",
+      "description": "Register your team and idea",
+      "date": "2026-02-03T00:59:00+00:00",
+      "is_completed": false,
+      "sort_order": 0,
+      "created_at": "2025-12-18T16:20:00.754285+00:00"
+    },
+    {
+      "id": "8965c07f-fc8a-486e-bc51-6d3ad276c89c",
+      "hackathon_id": "7d9e86c9-16bc-4113-85d3-8401f56784ec",
+      "title": "Hackathon Start",
+      "description": "Official hackathon kickoff with workshops",
+      "date": "2026-03-01T10:00:00+00:00",
+      "is_completed": false,
+      "sort_order": 1,
+      "created_at": "2025-12-18T16:20:00.124055+00:00"
+    },
+    {
+      "id": "c0ac5653-6c12-45f7-87ce-edd16484d9a6",
+      "hackathon_id": "7d9e86c9-16bc-4113-85d3-8401f56784ec",
+      "title": "Hackathon End",
+      "description": "Final submissions due",
+      "date": "2026-03-20T17:00:00+00:00",
+      "is_completed": false,
+      "sort_order": 2,
+      "created_at": "2025-12-18T16:20:00.286979+00:00"
+    },
+    {
+      "id": "d7917990-d352-48a3-8a40-f948d12d112e",
+      "hackathon_id": "7d9e86c9-16bc-4113-85d3-8401f56784ec",
+      "title": "Judging Complete",
+      "description": "Judges review and score submissions",
+      "date": "2026-04-24T23:59:00+00:00",
+      "is_completed": false,
+      "sort_order": 3,
+      "created_at": "2025-12-18T16:20:00.449117+00:00"
+    }
+  ],
+  "profiles": [
+    {
+      "id": "013f16e4-33d6-44fd-b94a-d4ac95c226fb",
+      "user_id": "1a5e563d-05a8-45e8-bb65-dde30b12e7dc",
+      "name": "Dustin Speer",
+      "email": "Dustin.Speer@blackbaud.com",
+      "avatar": null,
+      "department": null,
+      "location": null,
+      "skills": [],
+      "interests": [],
+      "banned": false,
+      "banned_at": null,
+      "first_name": "Dustin",
+      "last_name": "Speer",
+      "title": null,
+      "phone": null,
+      "job_title": null,
+      "organization": null,
+      "blackbaud_id": "3d177541-197c-4f25-a959-bcd90bf539fe",
+      "blackbaud_linked": true,
+      "environment_id": "p-TTKClfLPKk2a_nZYGhwHdA",
+      "environment_name": "Developer Sandbox",
+      "legal_entity_id": "p-6q3loUihlEuSJaiwRdHgag",
+      "legal_entity_name": "Blackbaud Inc.",
+      "birthdate": null,
+      "merchant_accounts": [],
+      "created_at": "2026-02-04T20:33:13.327317+00:00",
+      "updated_at": "2026-02-04T20:33:14.652598+00:00"
+    },
+    {
+      "id": "9ac26814-1a9a-4ab1-b148-6b5413d8f935",
+      "user_id": "9dde6cbc-cde5-44f1-a717-6b3ae10ae958",
+      "name": "Erik Leaver",
+      "email": "erik.leaver@blackbaud.com",
+      "avatar": "https://media.licdn.com/dms/image/v2/C4E03AQH04H8glc2QOQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1517662431261?e=1767830400&v=beta&t=p1u61s20R3jchP0X4ay1qlxAOTl-LhfRV78A_MmIzQ4",
+      "department": "",
+      "location": "",
+      "skills": [],
+      "interests": [],
+      "banned": false,
+      "banned_at": null,
+      "first_name": null,
+      "last_name": null,
+      "title": null,
+      "phone": null,
+      "job_title": null,
+      "organization": null,
+      "blackbaud_id": null,
+      "blackbaud_linked": false,
+      "environment_id": null,
+      "environment_name": null,
+      "legal_entity_id": null,
+      "legal_entity_name": null,
+      "birthdate": null,
+      "merchant_accounts": [],
+      "created_at": "2025-12-18T17:57:06.322396+00:00",
+      "updated_at": "2025-12-18T17:57:48.582968+00:00"
+    },
+    {
+      "id": "fd2f899e-a5f0-4513-87be-178dcd2735f5",
+      "user_id": "628f905a-2e74-41d8-b570-be23cd2991f9",
+      "name": "Jerry Needel",
+      "email": "jerry.needel@blackbaud.com",
+      "avatar": "https://media.licdn.com/dms/image/v2/D4E03AQE66SNX4RdLvw/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1665772004968?e=1767830400&v=beta&t=h-iZ8EnZsRuqy7seCXIZCN2QZVsbbQUqXjMjOpOlY4g",
+      "department": "",
+      "location": "",
+      "skills": [],
+      "interests": [],
+      "banned": false,
+      "banned_at": null,
+      "first_name": null,
+      "last_name": null,
+      "title": null,
+      "phone": null,
+      "job_title": null,
+      "organization": null,
+      "blackbaud_id": null,
+      "blackbaud_linked": false,
+      "environment_id": null,
+      "environment_name": null,
+      "legal_entity_id": null,
+      "legal_entity_name": null,
+      "birthdate": null,
+      "merchant_accounts": [],
+      "created_at": "2025-12-18T17:56:41.323185+00:00",
+      "updated_at": "2025-12-18T17:59:48.15114+00:00"
+    },
+    {
+      "id": "973033d4-d315-4df7-af46-3cc1c644248d",
+      "user_id": "6bc5df52-34f9-4fd9-a7c0-7a17c9740eac",
+      "name": "Rosalyn Lemieux",
+      "email": "Rosalyn.Lemieux@blackbaud.com",
+      "avatar": "https://media.licdn.com/dms/image/v2/D4E03AQEVCejcxtqAUQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1726663145901?e=1767830400&v=beta&t=vJ5hlX2gWBkHYG6d9chT_3zHEP3rk4yOv3PaiGE52_c",
+      "department": "",
+      "location": "Charleston, SC",
+      "skills": [
+        "TypeScript",
+        "React",
+        "Project Management",
+        "Product Design",
+        "Video",
+        "Node.js"
+      ],
+      "interests": [
+        "Artificial Intelligence",
+        "Sustainability",
+        "DEI"
+      ],
+      "banned": false,
+      "banned_at": null,
+      "first_name": "Rosalyn",
+      "last_name": "Lemieux",
+      "title": null,
+      "phone": null,
+      "job_title": null,
+      "organization": null,
+      "blackbaud_id": "253a2874-4ce2-44b1-8f11-a7d2647ecef2",
+      "blackbaud_linked": true,
+      "environment_id": "p-TTKClfLPKk2a_nZYGhwHdA",
+      "environment_name": "Developer Sandbox",
+      "legal_entity_id": "p-6q3loUihlEuSJaiwRdHgag",
+      "legal_entity_name": "Blackbaud Inc..",
+      "birthdate": null,
+      "merchant_accounts": [],
+      "created_at": "2025-12-18T16:53:09.121978+00:00",
+      "updated_at": "2026-01-14T17:03:54.006054+00:00"
+    },
+    {
+      "id": "da13cddf-162e-4801-b506-c7c0a6d9dd27",
+      "user_id": "4a122cfe-b582-423b-98a2-fafc40983173",
+      "name": "Rosalyn Lemieux",
+      "email": "rozlemieux@gmail.com",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=Rosalyn Lemieux",
+      "department": "",
+      "location": "",
+      "skills": [],
+      "interests": [],
+      "banned": false,
+      "banned_at": null,
+      "first_name": "Rosalyn",
+      "last_name": "Lemieux",
+      "title": null,
+      "phone": null,
+      "job_title": null,
+      "organization": null,
+      "blackbaud_id": "49b43e5e-43ed-4f30-ae9b-0ac4125ef085",
+      "blackbaud_linked": true,
+      "environment_id": "p-vnVAbDtfu0GyMqSDmG-_qw",
+      "environment_name": "SKY Developer Cohort Environment 1",
+      "legal_entity_id": "p-gVqr_yOSkUqsEKtm-ZpJnA",
+      "legal_entity_name": "SKY Developer Cohort",
+      "birthdate": null,
+      "merchant_accounts": [],
+      "created_at": "2025-12-19T18:30:43.067585+00:00",
+      "updated_at": "2026-01-23T18:25:35.924344+00:00"
+    }
+  ],
+  "user_roles": [
+    {
+      "id": "4273ab93-bacc-485a-aba1-47547ebb2ea4",
+      "user_id": "6bc5df52-34f9-4fd9-a7c0-7a17c9740eac",
+      "role": "admin",
+      "created_at": "2025-12-18T16:53:09.121978+00:00"
+    },
+    {
+      "id": "7df5eef8-02b1-4f84-892e-f332b60b5181",
+      "user_id": "628f905a-2e74-41d8-b570-be23cd2991f9",
+      "role": "judge",
+      "created_at": "2025-12-18T17:59:01.969616+00:00"
+    },
+    {
+      "id": "51489b72-671f-4c17-9280-de78c2644603",
+      "user_id": "4a122cfe-b582-423b-98a2-fafc40983173",
+      "role": "participant",
+      "created_at": "2025-12-19T18:30:43.067585+00:00"
+    },
+    {
+      "id": "fc34edd2-1d02-4d16-9934-fbc81c599654",
+      "user_id": "9dde6cbc-cde5-44f1-a717-6b3ae10ae958",
+      "role": "judge",
+      "created_at": "2025-12-22T20:11:14.114027+00:00"
+    },
+    {
+      "id": "f6f0135d-1ee8-4942-af5d-754a1004e842",
+      "user_id": "1a5e563d-05a8-45e8-bb65-dde30b12e7dc",
+      "role": "participant",
+      "created_at": "2026-02-04T20:33:13.327317+00:00"
+    }
+  ],
+  "teams": [
+    {
+      "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "name": "Innovation Squad",
+      "description": "Building the future of civic engagement",
+      "image_url": null,
+      "leader_id": "6bc5df52-34f9-4fd9-a7c0-7a17c9740eac",
+      "max_size": 5,
+      "skills": [
+        "React",
+        "TypeScript",
+        "AI/ML"
+      ],
+      "created_at": "2025-12-18T17:22:58.180945+00:00",
+      "updated_at": "2025-12-18T17:22:58.180945+00:00"
+    },
+    {
+      "id": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+      "name": "Data Wizards",
+      "description": "Leveraging data for social impact",
+      "image_url": null,
+      "leader_id": "6bc5df52-34f9-4fd9-a7c0-7a17c9740eac",
+      "max_size": 4,
+      "skills": [
+        "Python",
+        "Data Science",
+        "Visualization"
+      ],
+      "created_at": "2025-12-18T17:22:58.180945+00:00",
+      "updated_at": "2025-12-18T17:22:58.180945+00:00"
+    },
+    {
+      "id": "c3d4e5f6-a7b8-9012-cdef-123456789012",
+      "name": "Community Builders TWO",
+      "description": "Connecting communities through technology",
+      "image_url": null,
+      "leader_id": "6bc5df52-34f9-4fd9-a7c0-7a17c9740eac",
+      "max_size": 6,
+      "skills": [
+        "UX Design",
+        "Mobile",
+        "Community Organizing"
+      ],
+      "created_at": "2025-12-18T17:22:58.180945+00:00",
+      "updated_at": "2025-12-19T19:27:35.725073+00:00"
+    },
+    {
+      "id": "a043e985-b52d-40a2-b500-a8997e8e5d1f",
+      "name": "Leaver2000",
+      "description": "Improving the world's best soap",
+      "image_url": null,
+      "leader_id": "9dde6cbc-cde5-44f1-a717-6b3ae10ae958",
+      "max_size": 5,
+      "skills": [
+        "PHP"
+      ],
+      "created_at": "2025-12-18T23:56:42.58081+00:00",
+      "updated_at": "2025-12-18T23:56:42.58081+00:00"
+    },
+    {
+      "id": "4245d705-53c5-4ee2-977f-40ace11d4493",
+      "name": "innovation testing 123",
+      "description": "blah blah",
+      "image_url": null,
+      "leader_id": "4a122cfe-b582-423b-98a2-fafc40983173",
+      "max_size": 5,
+      "skills": [
+        "c#"
+      ],
+      "created_at": "2025-12-19T19:06:44.367232+00:00",
+      "updated_at": "2025-12-19T19:06:44.367232+00:00"
+    }
+  ],
+  "team_members": [
+    {
+      "id": "f6fcb36f-1615-4218-be79-f8bda8b5d36b",
+      "team_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "user_id": "6bc5df52-34f9-4fd9-a7c0-7a17c9740eac",
+      "joined_at": "2025-12-18T17:22:58.180945+00:00"
+    },
+    {
+      "id": "28d7531f-6dfa-490e-abba-89d21a5feefe",
+      "team_id": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+      "user_id": "6bc5df52-34f9-4fd9-a7c0-7a17c9740eac",
+      "joined_at": "2025-12-18T17:22:58.180945+00:00"
+    },
+    {
+      "id": "f16ada22-f713-4399-984f-a1a5e43ecb3d",
+      "team_id": "c3d4e5f6-a7b8-9012-cdef-123456789012",
+      "user_id": "6bc5df52-34f9-4fd9-a7c0-7a17c9740eac",
+      "joined_at": "2025-12-18T17:22:58.180945+00:00"
+    },
+    {
+      "id": "77234f4d-3e68-4728-bcc6-9bd73122c7a2",
+      "team_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "user_id": "9dde6cbc-cde5-44f1-a717-6b3ae10ae958",
+      "joined_at": "2025-12-18T17:58:02.956145+00:00"
+    },
+    {
+      "id": "29d7d652-8dcf-433c-a170-4735a22296d5",
+      "team_id": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+      "user_id": "9dde6cbc-cde5-44f1-a717-6b3ae10ae958",
+      "joined_at": "2025-12-18T23:54:25.624172+00:00"
+    },
+    {
+      "id": "28106647-2cdc-43da-9490-9974deb1c6e2",
+      "team_id": "a043e985-b52d-40a2-b500-a8997e8e5d1f",
+      "user_id": "9dde6cbc-cde5-44f1-a717-6b3ae10ae958",
+      "joined_at": "2025-12-18T23:56:42.865386+00:00"
+    },
+    {
+      "id": "911c2e4c-7d79-451a-8a82-ceba6f661587",
+      "team_id": "a043e985-b52d-40a2-b500-a8997e8e5d1f",
+      "user_id": "628f905a-2e74-41d8-b570-be23cd2991f9",
+      "joined_at": "2025-12-19T01:58:42.933529+00:00"
+    },
+    {
+      "id": "d62a5bd9-0b5f-4a64-bb4a-9fed0123db39",
+      "team_id": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+      "user_id": "628f905a-2e74-41d8-b570-be23cd2991f9",
+      "joined_at": "2025-12-19T01:58:45.08063+00:00"
+    },
+    {
+      "id": "34991672-a552-4867-9a28-a77b08370772",
+      "team_id": "c3d4e5f6-a7b8-9012-cdef-123456789012",
+      "user_id": "628f905a-2e74-41d8-b570-be23cd2991f9",
+      "joined_at": "2025-12-19T01:58:47.370183+00:00"
+    },
+    {
+      "id": "377b0c0c-9eb1-4c2f-84ab-2e3c75cb4221",
+      "team_id": "c3d4e5f6-a7b8-9012-cdef-123456789012",
+      "user_id": "4a122cfe-b582-423b-98a2-fafc40983173",
+      "joined_at": "2025-12-19T18:47:17.930673+00:00"
+    },
+    {
+      "id": "0363098d-4f47-41b7-a7c7-d922e243e636",
+      "team_id": "4245d705-53c5-4ee2-977f-40ace11d4493",
+      "user_id": "4a122cfe-b582-423b-98a2-fafc40983173",
+      "joined_at": "2025-12-19T19:06:44.629349+00:00"
+    },
+    {
+      "id": "ddfd764c-ae4e-4acc-a225-fcd57d05b334",
+      "team_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "user_id": "4a122cfe-b582-423b-98a2-fafc40983173",
+      "joined_at": "2025-12-19T19:30:53.527441+00:00"
+    },
+    {
+      "id": "65d882dd-9b7f-4a6a-9bb7-6fcc43823850",
+      "team_id": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+      "user_id": "4a122cfe-b582-423b-98a2-fafc40983173",
+      "joined_at": "2025-12-19T19:30:55.315677+00:00"
+    }
+  ],
+  "ideas": [
+    {
+      "id": "d4e5f6a7-b8c9-0123-def0-234567890123",
+      "title": "AI-Powered Constituent Feedback Analyzer",
+      "description": "An intelligent system that analyzes constituent feedback from multiple channels and provides actionable insights for policy makers.",
+      "status": "winner",
+      "author_id": "6bc5df52-34f9-4fd9-a7c0-7a17c9740eac",
+      "hackathon_id": "7d9e86c9-16bc-4113-85d3-8401f56784ec",
+      "team_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "track_id": "4e40f5a9-bb28-4e7a-9794-edb606aa1ed5",
+      "tags": [
+        "AI",
+        "NLP",
+        "Civic Tech"
+      ],
+      "attachments": [],
+      "video_url": null,
+      "repo_url": null,
+      "demo_url": null,
+      "votes": 45,
+      "award_ids": [
+        "b7e44a7d-076c-4b3a-b83f-09da6f2a9847"
+      ],
+      "assigned_judge_ids": [
+        "9dde6cbc-cde5-44f1-a717-6b3ae10ae958"
+      ],
+      "submitted_at": null,
+      "created_at": "2025-12-18T17:22:58.180945+00:00",
+      "updated_at": "2025-12-22T20:18:05.870041+00:00"
+    },
+    {
+      "id": "e5f6a7b8-c9d0-1234-ef01-345678901234",
+      "title": "Community Resource Map",
+      "description": "Interactive mapping platform that helps residents discover and access local resources and services.",
+      "status": "winner",
+      "author_id": "6bc5df52-34f9-4fd9-a7c0-7a17c9740eac",
+      "hackathon_id": "7d9e86c9-16bc-4113-85d3-8401f56784ec",
+      "team_id": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+      "track_id": "6e475c25-dac6-4ca5-a899-88a83cc9c2df",
+      "tags": [
+        "Mapping",
+        "Community",
+        "Resources"
+      ],
+      "attachments": [],
+      "video_url": null,
+      "repo_url": null,
+      "demo_url": null,
+      "votes": 29,
+      "award_ids": [
+        "b7e44a7d-076c-4b3a-b83f-09da6f2a9847"
+      ],
+      "assigned_judge_ids": [],
+      "submitted_at": null,
+      "created_at": "2025-12-18T17:22:58.180945+00:00",
+      "updated_at": "2025-12-22T20:14:04.539258+00:00"
+    },
+    {
+      "id": "a7b8c9d0-e1f2-3456-0123-567890123456",
+      "title": "Smart City Dashboard",
+      "description": "Real-time dashboard for city officials to monitor infrastructure and services.",
+      "status": "winner",
+      "author_id": "6bc5df52-34f9-4fd9-a7c0-7a17c9740eac",
+      "hackathon_id": "7d9e86c9-16bc-4113-85d3-8401f56784ec",
+      "team_id": null,
+      "track_id": "4e40f5a9-bb28-4e7a-9794-edb606aa1ed5",
+      "tags": [
+        "IoT",
+        "Dashboard",
+        "Smart City"
+      ],
+      "attachments": [],
+      "video_url": null,
+      "repo_url": null,
+      "demo_url": null,
+      "votes": 33,
+      "award_ids": [
+        "6656c191-6176-4eaf-b44f-1e25a72cfa5d"
+      ],
+      "assigned_judge_ids": [],
+      "submitted_at": null,
+      "created_at": "2025-12-18T17:22:58.180945+00:00",
+      "updated_at": "2025-12-22T20:14:04.677235+00:00"
+    },
+    {
+      "id": "f6a7b8c9-d0e1-2345-f012-456789012345",
+      "title": "Volunteer Matching Platform",
+      "description": "Connects volunteers with organizations based on skills, interests, and availability.",
+      "status": "draft",
+      "author_id": "6bc5df52-34f9-4fd9-a7c0-7a17c9740eac",
+      "hackathon_id": "7d9e86c9-16bc-4113-85d3-8401f56784ec",
+      "team_id": "c3d4e5f6-a7b8-9012-cdef-123456789012",
+      "track_id": "9a082d55-d07b-4c68-80e8-6402d6602559",
+      "tags": [
+        "Volunteering",
+        "Matching",
+        "Social Impact"
+      ],
+      "attachments": [],
+      "video_url": null,
+      "repo_url": null,
+      "demo_url": null,
+      "votes": 15,
+      "award_ids": [],
+      "assigned_judge_ids": [],
+      "submitted_at": null,
+      "created_at": "2025-12-18T17:22:58.180945+00:00",
+      "updated_at": "2025-12-18T20:56:35.936914+00:00"
+    },
+    {
+      "id": "b8c9d0e1-f2a3-4567-1234-678901234567",
+      "title": "Accessibility Navigator",
+      "description": "App that helps people with disabilities navigate public spaces with accessibility information.",
+      "status": "winner",
+      "author_id": "6bc5df52-34f9-4fd9-a7c0-7a17c9740eac",
+      "hackathon_id": "7d9e86c9-16bc-4113-85d3-8401f56784ec",
+      "team_id": null,
+      "track_id": "4e40f5a9-bb28-4e7a-9794-edb606aa1ed5",
+      "tags": [
+        "Accessibility",
+        "Navigation",
+        "Inclusion"
+      ],
+      "attachments": [],
+      "video_url": null,
+      "repo_url": null,
+      "demo_url": null,
+      "votes": 0,
+      "award_ids": [
+        "55287e54-1277-473f-8d38-17b1e886e0f9"
+      ],
+      "assigned_judge_ids": [],
+      "submitted_at": "2025-12-18T18:03:58.387+00:00",
+      "created_at": "2025-12-18T17:22:58.180945+00:00",
+      "updated_at": "2025-12-22T20:14:04.508839+00:00"
+    },
+    {
+      "id": "abfedef3-9159-4a94-929f-06456abb97a6",
+      "title": "General Innovation Idea",
+      "description": "An innovative idea that spans multiple tracks",
+      "status": "winner",
+      "author_id": "6bc5df52-34f9-4fd9-a7c0-7a17c9740eac",
+      "hackathon_id": "7d9e86c9-16bc-4113-85d3-8401f56784ec",
+      "team_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "track_id": "6e475c25-dac6-4ca5-a899-88a83cc9c2df",
+      "tags": [
+        "innovation",
+        "cross-track"
+      ],
+      "attachments": [],
+      "video_url": "http://youtube.com/",
+      "repo_url": "https://github.com/rozlemieux/hackathon-hub",
+      "demo_url": null,
+      "votes": 0,
+      "award_ids": [
+        "6656c191-6176-4eaf-b44f-1e25a72cfa5d"
+      ],
+      "assigned_judge_ids": [],
+      "submitted_at": null,
+      "created_at": "2025-12-18T17:39:56.441212+00:00",
+      "updated_at": "2025-12-22T20:14:04.525073+00:00"
+    },
+    {
+      "id": "5ad69671-57f4-4ae8-9d87-e98d0fa3f126",
+      "title": "Modernization of Leaver2000",
+      "description": "25th anniversary of the worlds greatest soap",
+      "status": "submitted",
+      "author_id": "9dde6cbc-cde5-44f1-a717-6b3ae10ae958",
+      "hackathon_id": "7d9e86c9-16bc-4113-85d3-8401f56784ec",
+      "team_id": null,
+      "track_id": "9a082d55-d07b-4c68-80e8-6402d6602559",
+      "tags": [],
+      "attachments": [],
+      "video_url": null,
+      "repo_url": null,
+      "demo_url": null,
+      "votes": 0,
+      "award_ids": [],
+      "assigned_judge_ids": [
+        "9dde6cbc-cde5-44f1-a717-6b3ae10ae958"
+      ],
+      "submitted_at": "2025-12-19T00:25:26.754+00:00",
+      "created_at": "2025-12-19T00:02:11.601298+00:00",
+      "updated_at": "2025-12-22T20:14:04.329151+00:00"
+    },
+    {
+      "id": "01f318dd-04a9-44f0-aeda-c7a6d3600a17",
+      "title": "an idea from roz",
+      "description": "should go do other things",
+      "status": "winner",
+      "author_id": "628f905a-2e74-41d8-b570-be23cd2991f9",
+      "hackathon_id": "7d9e86c9-16bc-4113-85d3-8401f56784ec",
+      "team_id": null,
+      "track_id": "9a082d55-d07b-4c68-80e8-6402d6602559",
+      "tags": [],
+      "attachments": [],
+      "video_url": null,
+      "repo_url": null,
+      "demo_url": null,
+      "votes": 0,
+      "award_ids": [
+        "b7e44a7d-076c-4b3a-b83f-09da6f2a9847"
+      ],
+      "assigned_judge_ids": [],
+      "submitted_at": "2025-12-18T18:14:13.519+00:00",
+      "created_at": "2025-12-18T18:14:13.791023+00:00",
+      "updated_at": "2025-12-22T20:14:04.473649+00:00"
+    },
+    {
+      "id": "6a1fe50e-4889-44b3-9bb2-822ece8369a1",
+      "title": "jerry's BIG idea",
+      "description": "just had one",
+      "status": "winner",
+      "author_id": "628f905a-2e74-41d8-b570-be23cd2991f9",
+      "hackathon_id": "7d9e86c9-16bc-4113-85d3-8401f56784ec",
+      "team_id": null,
+      "track_id": "9a082d55-d07b-4c68-80e8-6402d6602559",
+      "tags": [],
+      "attachments": [],
+      "video_url": null,
+      "repo_url": null,
+      "demo_url": null,
+      "votes": 2,
+      "award_ids": [
+        "6656c191-6176-4eaf-b44f-1e25a72cfa5d"
+      ],
+      "assigned_judge_ids": [],
+      "submitted_at": "2025-12-18T18:11:36.003+00:00",
+      "created_at": "2025-12-18T18:11:36.377622+00:00",
+      "updated_at": "2025-12-22T20:14:04.497827+00:00"
+    },
+    {
+      "id": "303a936b-4d17-41ee-b0c2-82170d2f2679",
+      "title": "AI-Powered User Flow Designer",
+      "description": "A tool that allows product managers to describe user goals in natural language, generating basic, editable user flow diagrams. It aims to accelerate low-fidelity prototyping by providing AI-suggested steps and drag-and-drop customization.",
+      "status": "draft",
+      "author_id": "4a122cfe-b582-423b-98a2-fafc40983173",
+      "hackathon_id": "7d9e86c9-16bc-4113-85d3-8401f56784ec",
+      "team_id": null,
+      "track_id": "4e40f5a9-bb28-4e7a-9794-edb606aa1ed5",
+      "tags": [],
+      "attachments": [],
+      "video_url": null,
+      "repo_url": null,
+      "demo_url": null,
+      "votes": 0,
+      "award_ids": [],
+      "assigned_judge_ids": [],
+      "submitted_at": null,
+      "created_at": "2026-01-08T21:15:17.041603+00:00",
+      "updated_at": "2026-01-08T21:15:17.041603+00:00"
+    },
+    {
+      "id": "cd9e0ff6-f942-4a0e-a2fb-05fce44785a0",
+      "title": "SharePoint Sparker Widget",
+      "description": "A dynamic SharePoint widget designed to foster team innovation. It provides brainstorming prompts, allows users to categorize and tag ideas, and includes voting/commenting features for collaborative prioritization, transforming SharePoint into an interactive idea hub.",
+      "status": "draft",
+      "author_id": "6bc5df52-34f9-4fd9-a7c0-7a17c9740eac",
+      "hackathon_id": "7d9e86c9-16bc-4113-85d3-8401f56784ec",
+      "team_id": null,
+      "track_id": "4e40f5a9-bb28-4e7a-9794-edb606aa1ed5",
+      "tags": [],
+      "attachments": [],
+      "video_url": null,
+      "repo_url": null,
+      "demo_url": null,
+      "votes": 0,
+      "award_ids": [],
+      "assigned_judge_ids": [],
+      "submitted_at": null,
+      "created_at": "2026-01-14T17:05:15.060876+00:00",
+      "updated_at": "2026-01-14T17:05:15.060876+00:00"
+    }
+  ],
+  "idea_ratings": [
+    {
+      "id": "1c4827ef-ee09-4f76-a99d-5034dadcd354",
+      "idea_id": "abfedef3-9159-4a94-929f-06456abb97a6",
+      "judge_id": "628f905a-2e74-41d8-b570-be23cd2991f9",
+      "scores": [
+        {
+          "criterionId": "53e008f3-0b0f-4d79-8b25-6823fc21122f",
+          "score": 5
+        },
+        {
+          "criterionId": "8679a5ea-515d-49cc-9e20-f030c10492ff",
+          "score": 3
+        },
+        {
+          "criterionId": "64ca9772-d3fa-4c44-83d9-e49af34846bd",
+          "score": 5
+        },
+        {
+          "criterionId": "fed0539f-1293-4244-b81d-43625c04dde6",
+          "score": 5
+        },
+        {
+          "criterionId": "0f1a6229-705f-4370-844e-21f62aa4729a",
+          "score": 3
+        },
+        {
+          "criterionId": "0ba34de6-05fe-4cd4-a5df-851d608da42d",
+          "score": 5
+        }
+      ],
+      "overall_feedback": "sadlfjslf",
+      "created_at": "2025-12-18T18:00:09.73042+00:00",
+      "updated_at": "2025-12-18T18:00:09.73042+00:00"
+    },
+    {
+      "id": "9235cb2f-07ba-4fea-ab8f-02cf57283501",
+      "idea_id": "6a1fe50e-4889-44b3-9bb2-822ece8369a1",
+      "judge_id": "628f905a-2e74-41d8-b570-be23cd2991f9",
+      "scores": [
+        {
+          "criterionId": "53e008f3-0b0f-4d79-8b25-6823fc21122f",
+          "score": 5
+        },
+        {
+          "criterionId": "8679a5ea-515d-49cc-9e20-f030c10492ff",
+          "score": 7
+        },
+        {
+          "criterionId": "64ca9772-d3fa-4c44-83d9-e49af34846bd",
+          "score": 7
+        },
+        {
+          "criterionId": "fed0539f-1293-4244-b81d-43625c04dde6",
+          "score": 5
+        },
+        {
+          "criterionId": "0f1a6229-705f-4370-844e-21f62aa4729a",
+          "score": 5
+        },
+        {
+          "criterionId": "0ba34de6-05fe-4cd4-a5df-851d608da42d",
+          "score": 5
+        }
+      ],
+      "overall_feedback": "asfd",
+      "created_at": "2025-12-18T18:13:31.982882+00:00",
+      "updated_at": "2025-12-18T18:13:31.982882+00:00"
+    }
+  ],
+  "comments": [],
+  "team_join_requests": [
+    {
+      "id": "0d7a686c-8f8f-4ed6-9cc7-dc9c9d42834b",
+      "team_id": "a043e985-b52d-40a2-b500-a8997e8e5d1f",
+      "user_id": "6bc5df52-34f9-4fd9-a7c0-7a17c9740eac",
+      "message": "hi can i please join your team?",
+      "status": "pending",
+      "created_at": "2025-12-22T19:36:36.544637+00:00",
+      "updated_at": "2025-12-22T19:36:36.544637+00:00"
+    },
+    {
+      "id": "94143ffd-d821-44f0-9798-81824fd7a582",
+      "team_id": "4245d705-53c5-4ee2-977f-40ace11d4493",
+      "user_id": "6bc5df52-34f9-4fd9-a7c0-7a17c9740eac",
+      "message": "blsh",
+      "status": "approved",
+      "created_at": "2025-12-22T20:07:04.405638+00:00",
+      "updated_at": "2026-01-08T21:15:57.628534+00:00"
+    },
+    {
+      "id": "58261e2e-4de1-4266-ac54-2e16903d0e0f",
+      "team_id": "a043e985-b52d-40a2-b500-a8997e8e5d1f",
+      "user_id": "4a122cfe-b582-423b-98a2-fafc40983173",
+      "message": "hi",
+      "status": "pending",
+      "created_at": "2026-01-08T21:16:13.223647+00:00",
+      "updated_at": "2026-01-08T21:16:13.223647+00:00"
+    }
+  ],
+  "team_invites": []
+}
