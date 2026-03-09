@@ -226,6 +226,10 @@ This plan is derived from `plan.md` and implemented as a phased baseline in this
     - Added `AssignedJudgeOrAdminRequirement`/handler for idea-scoped judge assignment checks.
     - `POST /api/judging/ratings` now uses `IAuthorizationService` with idea resource authorization.
     - Added unit tests covering assigned-judge, admin, and unassigned-judge authorization paths.
+56. Resource-level ownership authorization handlers implemented for ideas/teams:
+    - Added `IdeaOwnerOrAdminRequirement` and `TeamLeaderOrAdminRequirement` handlers.
+    - Wired handlers into DI and applied `IAuthorizationService` checks in ideas/teams upsert update paths.
+    - Added unit tests for owner/leader success and non-owner/non-leader denial paths.
 
 ## Implemented Frontend Steps
 1. Role and auth state models/services created.

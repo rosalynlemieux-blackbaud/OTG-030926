@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using OTG.Api.Authorization;
 using OTG.Api.Contracts;
 using OTG.Api.Extensions;
 using OTG.Application.Abstractions.Repositories;
@@ -10,7 +11,7 @@ namespace OTG.Api.Controllers;
 [ApiController]
 [Route("api/teams")]
 [Authorize(Policy = "NotBanned")]
-public sealed class TeamsController(ITeamRepository teamRepository) : ControllerBase
+public sealed class TeamsController(ITeamRepository teamRepository, IAuthorizationService authorizationService) : ControllerBase
 {
     [HttpGet]
     public async Task<ActionResult<IReadOnlyList<Team>>> Search(
@@ -50,7 +51,8 @@ public sealed class TeamsController(ITeamRepository teamRepository) : Controller
                 return NotFound();
             }
 
-            if (!string.Equals(existing.LeaderId, userId, StringComparison.Ordinal) && !User.IsInRole("Admin"))
+            var authorizationResult = await authorizationService.AuthorizeAsync(User, existing, new TeamLeaderOrAdminRequirement());
+            if (!authorizationResult.Succeeded)
             {
                 return Forbid();
             }

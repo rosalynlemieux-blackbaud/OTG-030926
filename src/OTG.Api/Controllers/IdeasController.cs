@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using OTG.Api.Authorization;
 using OTG.Api.Contracts;
 using OTG.Api.Extensions;
 using OTG.Application.Abstractions.Repositories;
@@ -10,7 +11,7 @@ namespace OTG.Api.Controllers;
 [ApiController]
 [Route("api/ideas")]
 [Authorize(Policy = "NotBanned")]
-public sealed class IdeasController(IIdeaRepository ideaRepository) : ControllerBase
+public sealed class IdeasController(IIdeaRepository ideaRepository, IAuthorizationService authorizationService) : ControllerBase
 {
     [HttpGet]
     public async Task<ActionResult<IReadOnlyList<Idea>>> Search(
@@ -52,7 +53,8 @@ public sealed class IdeasController(IIdeaRepository ideaRepository) : Controller
                 return NotFound();
             }
 
-            if (!string.Equals(existing.AuthorId, userId, StringComparison.Ordinal) && !User.IsInRole("Admin"))
+            var authorizationResult = await authorizationService.AuthorizeAsync(User, existing, new IdeaOwnerOrAdminRequirement());
+            if (!authorizationResult.Succeeded)
             {
                 return Forbid();
             }
