@@ -23,6 +23,7 @@ builder.Services.AddSingleton<ITokenService, JwtTokenService>();
 builder.Services.AddSingleton<IBlackbaudStateStore, BlackbaudStateStore>();
 builder.Services.AddHttpClient<IBlackbaudOAuthService, BlackbaudOAuthService>();
 builder.Services.AddScoped<IAuthorizationHandler, NotBannedHandler>();
+builder.Services.AddScoped<IAuthorizationHandler, AssignedJudgeOrAdminHandler>();
 
 var signingKey = builder.Configuration["Jwt:SigningKey"];
 if (string.IsNullOrWhiteSpace(signingKey))

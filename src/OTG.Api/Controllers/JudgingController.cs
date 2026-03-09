@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using OTG.Api.Authorization;
 using OTG.Api.Contracts;
 using OTG.Api.Extensions;
 using OTG.Application.Abstractions.Repositories;
@@ -13,7 +14,8 @@ namespace OTG.Api.Controllers;
 public sealed class JudgingController(
     IIdeaRepository ideaRepository,
     IRatingRepository ratingRepository,
-    IHackathonRepository hackathonRepository) : ControllerBase
+    IHackathonRepository hackathonRepository,
+    IAuthorizationService authorizationService) : ControllerBase
 {
     [HttpGet("assigned")]
     [Authorize(Roles = "Judge,Admin")]
@@ -50,7 +52,8 @@ public sealed class JudgingController(
             return NotFound();
         }
 
-        if (!User.IsInRole("Admin") && !idea.AssignedJudgeIds.Contains(userId, StringComparer.Ordinal))
+        var authorizationResult = await authorizationService.AuthorizeAsync(User, idea, new AssignedJudgeOrAdminRequirement());
+        if (!authorizationResult.Succeeded)
         {
             return Forbid();
         }

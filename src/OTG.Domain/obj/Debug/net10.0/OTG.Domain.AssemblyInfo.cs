@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OTG.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f9a5a4e5c35a60b4df69a8b762b3556e5169da38")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+687e3a3407cca9398892a0cac8c4b83ccb4a3405")]
 [assembly: System.Reflection.AssemblyProductAttribute("OTG.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OTG.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

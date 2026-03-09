@@ -222,6 +222,10 @@ This plan is derived from `plan.md` and implemented as a phased baseline in this
     - Leaderboard and per-track endpoints now apply configured percentile thresholds for band labels.
     - Leaderboard response metadata now includes effective band-threshold values.
     - Added integration coverage for configured-threshold band assignment.
+55. Resource-level judging authorization policy handler implemented:
+    - Added `AssignedJudgeOrAdminRequirement`/handler for idea-scoped judge assignment checks.
+    - `POST /api/judging/ratings` now uses `IAuthorizationService` with idea resource authorization.
+    - Added unit tests covering assigned-judge, admin, and unassigned-judge authorization paths.
 
 ## Implemented Frontend Steps
 1. Role and auth state models/services created.
