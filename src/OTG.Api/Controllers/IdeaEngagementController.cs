@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using OTG.Api.Authorization;
 using OTG.Api.Contracts;
 using OTG.Api.Extensions;
 using OTG.Application.Abstractions.Repositories;
@@ -13,7 +14,8 @@ namespace OTG.Api.Controllers;
 public sealed class IdeaEngagementController(
     IIdeaRepository ideaRepository,
     ICommentRepository commentRepository,
-    IRatingRepository ratingRepository) : ControllerBase
+    IRatingRepository ratingRepository,
+    IAuthorizationService authorizationService) : ControllerBase
 {
     [HttpPost("comments")]
     public async Task<ActionResult<Comment>> CreateComment(
@@ -100,7 +102,8 @@ public sealed class IdeaEngagementController(
             return NotFound();
         }
 
-        if (!User.IsInRole("Admin") && !string.Equals(comment.AuthorId, userId, StringComparison.Ordinal))
+        var authorizationResult = await authorizationService.AuthorizeAsync(User, comment, new CommentOwnerOrAdminRequirement());
+        if (!authorizationResult.Succeeded)
         {
             return Forbid();
         }

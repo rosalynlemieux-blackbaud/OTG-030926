@@ -26,6 +26,7 @@ builder.Services.AddScoped<IAuthorizationHandler, NotBannedHandler>();
 builder.Services.AddScoped<IAuthorizationHandler, AssignedJudgeOrAdminHandler>();
 builder.Services.AddScoped<IAuthorizationHandler, IdeaOwnerOrAdminHandler>();
 builder.Services.AddScoped<IAuthorizationHandler, TeamLeaderOrAdminHandler>();
+builder.Services.AddScoped<IAuthorizationHandler, CommentOwnerOrAdminHandler>();
 
 var signingKey = builder.Configuration["Jwt:SigningKey"];
 if (string.IsNullOrWhiteSpace(signingKey))

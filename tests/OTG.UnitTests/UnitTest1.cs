@@ -161,6 +161,46 @@ public sealed class AuthorizationHandlerTests
         Assert.False(context.HasSucceeded);
     }
 
+    [Fact]
+    public async Task CommentOwnerOrAdminHandler_Succeeds_ForCommentOwner()
+    {
+        var user = CreatePrincipal("comment-author-1", role: "Participant");
+        var comment = new Comment
+        {
+            Id = "comment-1",
+            IdeaId = "idea-1",
+            AuthorId = "comment-author-1",
+            Content = "hello"
+        };
+
+        var requirement = new CommentOwnerOrAdminRequirement();
+        var context = new AuthorizationHandlerContext([requirement], user, comment);
+
+        await new CommentOwnerOrAdminHandler().HandleAsync(context);
+
+        Assert.True(context.HasSucceeded);
+    }
+
+    [Fact]
+    public async Task CommentOwnerOrAdminHandler_DoesNotSucceed_ForNonOwnerParticipant()
+    {
+        var user = CreatePrincipal("comment-author-2", role: "Participant");
+        var comment = new Comment
+        {
+            Id = "comment-1",
+            IdeaId = "idea-1",
+            AuthorId = "comment-author-1",
+            Content = "hello"
+        };
+
+        var requirement = new CommentOwnerOrAdminRequirement();
+        var context = new AuthorizationHandlerContext([requirement], user, comment);
+
+        await new CommentOwnerOrAdminHandler().HandleAsync(context);
+
+        Assert.False(context.HasSucceeded);
+    }
+
     private static ClaimsPrincipal CreatePrincipal(string userId, string role)
     {
         var identity = new ClaimsIdentity(

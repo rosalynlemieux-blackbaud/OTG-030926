@@ -96,3 +96,26 @@ public sealed class TeamLeaderOrAdminHandler : AuthorizationHandler<TeamLeaderOr
         return Task.CompletedTask;
     }
 }
+
+public sealed class CommentOwnerOrAdminRequirement : IAuthorizationRequirement
+{
+}
+
+public sealed class CommentOwnerOrAdminHandler : AuthorizationHandler<CommentOwnerOrAdminRequirement, Comment>
+{
+    protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, CommentOwnerOrAdminRequirement requirement, Comment resource)
+    {
+        var userId = context.User.GetUserId();
+        if (string.IsNullOrWhiteSpace(userId))
+        {
+            return Task.CompletedTask;
+        }
+
+        if (context.User.IsInRole("Admin") || string.Equals(resource.AuthorId, userId, StringComparison.Ordinal))
+        {
+            context.Succeed(requirement);
+        }
+
+        return Task.CompletedTask;
+    }
+}

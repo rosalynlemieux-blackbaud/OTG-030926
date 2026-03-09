@@ -233,6 +233,24 @@ This plan is derived from `plan.md` and implemented as a phased baseline in this
 57. Team workflow resource-authorization alignment implemented:
     - Replaced inline leader/admin checks with `IAuthorizationService` + `TeamLeaderOrAdminRequirement` in team workflow endpoints.
     - Added integration coverage ensuring non-leader participants are forbidden from reading team join requests.
+58. Ideas/teams ownership authorization integration coverage added:
+    - Added end-to-end integration tests for idea update authorization (owner/admin allowed, non-owner forbidden).
+    - Added end-to-end integration tests for team update authorization (leader/admin allowed, non-leader forbidden).
+59. Idea engagement ownership authorization handler implemented:
+    - Added `CommentOwnerOrAdminRequirement`/handler and wired into DI.
+    - `PUT /api/ideas/{ideaId}/comments/{commentId}` now uses resource-based authorization via `IAuthorizationService`.
+    - Added unit and integration coverage for admin/owner allowed vs non-owner denied update paths.
+60. Judging score-validation hardening implemented:
+    - `POST /api/judging/ratings` now validates submitted criterion IDs against hackathon criteria.
+    - Rejects duplicate criterion submissions and score values outside criterion bounds.
+    - Added integration tests for unknown criterion IDs and out-of-bounds score rejection.
+61. Hackathon leaderboard-band admin API implemented:
+    - Added admin endpoint `PUT /api/hackathons/{hackathonId}/leaderboard-bands`.
+    - Persists validated percentile thresholds (`Platinum >= Gold >= Silver`, each within `0..100`).
+    - Added integration tests for admin success, participant forbidden access, and invalid threshold rejection.
+62. Frontend Angular workspace runtime bootstrap completed:
+    - Added Angular workspace files under `frontend/` (`angular.json`, `package.json`, tsconfig files, `src/index.html`, `src/styles.css`, `public/favicon.ico`).
+    - Updated project naming/config to `otg-frontend` to support local `npm`/`ng` build workflow.
 
 ## Implemented Frontend Steps
 1. Role and auth state models/services created.
@@ -245,16 +263,17 @@ This plan is derived from `plan.md` and implemented as a phased baseline in this
 
 ## Remaining Execution Plan
 ### Backend
-- Expand feature controllers/use-cases (judging/admin) and policy handlers.
-- Expand policy handlers for fine-grained ownership/assignment checks at resource level.
-- Add configurable tier-threshold settings per hackathon (admin-defined leaderboard band cutoffs).
+- Add integration tests for ideas/teams update authorization (owner/leader/admin allowed vs non-owner denied).
+- Continue replacing remaining inline resource checks with authorization handlers where applicable (e.g., idea engagement ownership/moderation paths).
+- Add admin APIs to manage hackathon leaderboard band settings (currently readable/used, but not admin-configurable via API).
+- Add validation hardening for judging score payloads against hackathon criteria bounds and IDs.
 
 ### Frontend
-- Initialize full Angular workspace runtime files (`angular.json`, `package.json`) once Node is available.
+- Initialize full Angular workspace runtime files (`angular.json`, `package.json`) now that Node/NPM is available.
 - Replace placeholders with SKY UX pages by role.
 - Add API client layer and auth session integration.
 - Build out admin tabs, judging flows, and analytics views.
+- Add frontend build/test pipeline validation after workspace bootstrap.
 
 ## Environment Constraints Encountered
-- Node/NPM is not installed in current environment, so Angular CLI generation and frontend build verification could not be executed here.
 - CodeRabbit CLI is not installed in current environment.

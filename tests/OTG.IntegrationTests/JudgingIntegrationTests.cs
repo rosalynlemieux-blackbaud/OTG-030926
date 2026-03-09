@@ -139,6 +139,70 @@ public sealed class JudgingIntegrationTests
         Assert.Equal(80m, rating.WeightedScore);
     }
 
+    [Fact]
+    public async Task SubmitRating_ReturnsBadRequest_WhenCriterionIdUnknownForHackathon()
+    {
+        await using var factory = new TestApiFactory();
+
+        var judge = factory.SeedUser("judge-unknown-criterion@example.com", UserRole.Judge);
+        var hackathon = factory.SeedHackathon("h-unknown-criterion", [new JudgingCriterion
+        {
+            Id = "impact",
+            Name = "Impact",
+            MaxScore = 5,
+            Weight = 1
+        }]);
+        var idea = factory.SeedIdea(hackathon.HackathonId, "idea-unknown-criterion", assignedJudgeIds: [judge.Id]);
+
+        var client = factory.CreateClient(new WebApplicationFactoryClientOptions { AllowAutoRedirect = false });
+        AddAuthHeaders(client, judge.Id, judge.Email, "Judge");
+
+        var response = await client.PostAsJsonAsync("/api/judging/ratings", new
+        {
+            IdeaId = idea.Id,
+            HackathonId = hackathon.HackathonId,
+            Scores = new[]
+            {
+                new { CriterionId = "unknown", Score = 4, Feedback = "bad criterion id" }
+            },
+            OverallFeedback = "test"
+        });
+
+        Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+    }
+
+    [Fact]
+    public async Task SubmitRating_ReturnsBadRequest_WhenCriterionScoreOutOfBounds()
+    {
+        await using var factory = new TestApiFactory();
+
+        var judge = factory.SeedUser("judge-oob-score@example.com", UserRole.Judge);
+        var hackathon = factory.SeedHackathon("h-oob-score", [new JudgingCriterion
+        {
+            Id = "impact",
+            Name = "Impact",
+            MaxScore = 5,
+            Weight = 1
+        }]);
+        var idea = factory.SeedIdea(hackathon.HackathonId, "idea-oob-score", assignedJudgeIds: [judge.Id]);
+
+        var client = factory.CreateClient(new WebApplicationFactoryClientOptions { AllowAutoRedirect = false });
+        AddAuthHeaders(client, judge.Id, judge.Email, "Judge");
+
+        var response = await client.PostAsJsonAsync("/api/judging/ratings", new
+        {
+            IdeaId = idea.Id,
+            HackathonId = hackathon.HackathonId,
+            Scores = new[]
+            {
+                new { CriterionId = "impact", Score = 8, Feedback = "over max" }
+            },
+            OverallFeedback = "test"
+        });
+
+        Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+    }
+
     private static void AddAuthHeaders(HttpClient client, string userId, string email, string role)
     {
         client.DefaultRequestHeaders.Remove(TestAuthHandler.UserIdHeader);

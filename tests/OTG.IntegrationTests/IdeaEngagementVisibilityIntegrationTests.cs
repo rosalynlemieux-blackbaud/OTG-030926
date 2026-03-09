@@ -129,6 +129,29 @@ public sealed class IdeaEngagementVisibilityIntegrationTests
     }
 
     [Fact]
+    public async Task UpdateComment_Succeeds_ForAdmin()
+    {
+        await using var factory = new TestApiFactory();
+        var author = factory.SeedUser("author-update-admin@example.com", UserRole.Participant);
+        var admin = factory.SeedUser("admin-update-comment@example.com", UserRole.Admin);
+        var idea = factory.SeedIdea("hack-comment-update-admin", "idea-comment-update-admin", author.Id);
+        var comment = factory.SeedComment(idea.Id, author.Id, isModerated: false);
+
+        var client = factory.CreateClient(new WebApplicationFactoryClientOptions { AllowAutoRedirect = false });
+        AddAuthHeaders(client, admin.Id, admin.Email, "Admin");
+
+        var response = await client.PutAsJsonAsync($"/api/ideas/{idea.Id}/comments/{comment.Id}?hackathonId={idea.HackathonId}", new
+        {
+            Content = "Edited by admin"
+        });
+
+        Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        var updated = await response.Content.ReadFromJsonAsync<Comment>();
+        Assert.NotNull(updated);
+        Assert.Equal("Edited by admin", updated!.Content);
+    }
+
+    [Fact]
     public async Task GetComments_HidesModeratedComments_ForParticipant()
     {
         await using var factory = new TestApiFactory();
