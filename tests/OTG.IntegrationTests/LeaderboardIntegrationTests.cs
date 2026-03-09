@@ -11,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using OTG.Application.Abstractions.Repositories;
+using OTG.Domain.Hackathons;
 using OTG.Domain.Identity;
 using OTG.Domain.Ideas;
 
@@ -436,6 +437,38 @@ public sealed class LeaderboardIntegrationTests
         Assert.Equal("bronze", payload.Items[1].Band);
     }
 
+    [Fact]
+    public async Task Leaderboard_UsesHackathonConfiguredBandThresholds()
+    {
+        await using var factory = new TestApiFactory();
+        var participant = factory.SeedUser("participant-configured-bands@example.com", UserRole.Participant);
+        var author = factory.SeedUser("author-configured-bands@example.com", UserRole.Participant);
+        factory.SeedHackathonBandSettings("hack-l-configured-bands", platinumMinPercentile: 95m, goldMinPercentile: 60m, silverMinPercentile: 30m);
+        var topIdea = factory.SeedIdea("hack-l-configured-bands", "idea-l-configured-bands-top", author.Id);
+        var secondIdea = factory.SeedIdea("hack-l-configured-bands", "idea-l-configured-bands-second", author.Id);
+        var thirdIdea = factory.SeedIdea("hack-l-configured-bands", "idea-l-configured-bands-third", author.Id);
+        var fourthIdea = factory.SeedIdea("hack-l-configured-bands", "idea-l-configured-bands-fourth", author.Id);
+
+        factory.SeedRating(topIdea.Id, "judge-top", weightedScore: 100m, isModerated: false);
+        factory.SeedRating(secondIdea.Id, "judge-second", weightedScore: 90m, isModerated: false);
+        factory.SeedRating(thirdIdea.Id, "judge-third", weightedScore: 80m, isModerated: false);
+        factory.SeedRating(fourthIdea.Id, "judge-fourth", weightedScore: 70m, isModerated: false);
+
+        var client = factory.CreateClient(new WebApplicationFactoryClientOptions { AllowAutoRedirect = false });
+        AddAuthHeaders(client, participant.Id, participant.Email, "Participant");
+
+        var response = await client.GetAsync("/api/leaderboard?hackathonId=hack-l-configured-bands");
+
+        Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        var payload = await response.Content.ReadFromJsonAsync<LeaderboardResponse>();
+        Assert.NotNull(payload);
+        Assert.NotNull(payload!.BandThresholds);
+        Assert.Equal(95m, payload.BandThresholds!.PlatinumMinPercentile);
+        Assert.Equal(60m, payload.BandThresholds.GoldMinPercentile);
+        Assert.Equal(30m, payload.BandThresholds.SilverMinPercentile);
+        Assert.Equal(["platinum", "gold", "silver", "bronze"], payload.Items!.Select(item => item.Band).ToArray());
+    }
+
     private static void AddAuthHeaders(HttpClient client, string userId, string email, string rolesCsv)
     {
         client.DefaultRequestHeaders.Remove(TestAuthHandler.UserIdHeader);
@@ -453,6 +486,7 @@ public sealed class LeaderboardIntegrationTests
         public int MinRatingCount { get; set; }
         public string? SortMode { get; set; }
         public decimal ConfidencePivot { get; set; }
+        public BandThresholdsResponse? BandThresholds { get; set; }
         public string? ETag { get; set; }
         public int Total { get; set; }
         public int Offset { get; set; }
@@ -477,8 +511,16 @@ public sealed class LeaderboardIntegrationTests
         public int MinRatingCount { get; set; }
         public string? SortMode { get; set; }
         public decimal ConfidencePivot { get; set; }
+        public BandThresholdsResponse? BandThresholds { get; set; }
         public int PerTrackLimit { get; set; }
         public List<TrackRollupItem>? Tracks { get; set; }
+    }
+
+    private sealed class BandThresholdsResponse
+    {
+        public decimal PlatinumMinPercentile { get; set; }
+        public decimal GoldMinPercentile { get; set; }
+        public decimal SilverMinPercentile { get; set; }
     }
 
     private sealed class TrackRollupItem
@@ -493,6 +535,7 @@ public sealed class LeaderboardIntegrationTests
         public InMemoryUserRepository UserRepository { get; } = new();
         public InMemoryIdeaRepository IdeaRepository { get; } = new();
         public InMemoryRatingRepository RatingRepository { get; } = new();
+        public InMemoryHackathonRepository HackathonRepository { get; } = new();
 
         protected override void ConfigureWebHost(IWebHostBuilder builder)
         {
@@ -502,6 +545,7 @@ public sealed class LeaderboardIntegrationTests
                 services.RemoveAll<IUserRepository>();
                 services.RemoveAll<IIdeaRepository>();
                 services.RemoveAll<IRatingRepository>();
+                services.RemoveAll<IHackathonRepository>();
 
                 services
                     .AddAuthentication(options =>
@@ -516,6 +560,7 @@ public sealed class LeaderboardIntegrationTests
                 services.AddSingleton<IUserRepository>(UserRepository);
                 services.AddSingleton<IIdeaRepository>(IdeaRepository);
                 services.AddSingleton<IRatingRepository>(RatingRepository);
+                services.AddSingleton<IHackathonRepository>(HackathonRepository);
             });
         }
 
@@ -577,6 +622,22 @@ public sealed class LeaderboardIntegrationTests
 
             RatingRepository.UpsertAsync(rating).GetAwaiter().GetResult();
             return rating;
+        }
+
+        public void SeedHackathonBandSettings(string hackathonId, decimal platinumMinPercentile, decimal goldMinPercentile, decimal silverMinPercentile)
+        {
+            HackathonRepository.UpsertAsync(new Hackathon
+            {
+                Id = hackathonId,
+                HackathonId = hackathonId,
+                Name = hackathonId,
+                LeaderboardBands = new LeaderboardBandSettings
+                {
+                    PlatinumMinPercentile = platinumMinPercentile,
+                    GoldMinPercentile = goldMinPercentile,
+                    SilverMinPercentile = silverMinPercentile
+                }
+            }).GetAwaiter().GetResult();
         }
     }
 
@@ -753,6 +814,55 @@ public sealed class LeaderboardIntegrationTests
                 ModeratedAtUtc = rating.ModeratedAtUtc,
                 CreatedAtUtc = rating.CreatedAtUtc,
                 UpdatedAtUtc = rating.UpdatedAtUtc
+            };
+        }
+    }
+
+    private sealed class InMemoryHackathonRepository : IHackathonRepository
+    {
+        private readonly Dictionary<string, Hackathon> byId = [];
+
+        public Task<Hackathon?> GetByIdAsync(string hackathonId, CancellationToken cancellationToken = default)
+            => Task.FromResult(byId.TryGetValue(hackathonId, out var hackathon) ? Clone(hackathon) : null);
+
+        public Task UpsertAsync(Hackathon hackathon, CancellationToken cancellationToken = default)
+        {
+            byId[hackathon.HackathonId] = Clone(hackathon);
+            return Task.CompletedTask;
+        }
+
+        private static Hackathon Clone(Hackathon hackathon)
+        {
+            return new Hackathon
+            {
+                Id = hackathon.Id,
+                HackathonId = hackathon.HackathonId,
+                Name = hackathon.Name,
+                Description = hackathon.Description,
+                LogoUrl = hackathon.LogoUrl,
+                LedeImageUrl = hackathon.LedeImageUrl,
+                RegistrationOpen = hackathon.RegistrationOpen,
+                SubmissionDeadline = hackathon.SubmissionDeadline,
+                JudgingStart = hackathon.JudgingStart,
+                JudgingEnd = hackathon.JudgingEnd,
+                RulesMarkdown = hackathon.RulesMarkdown,
+                Faq = hackathon.Faq.Select(item => new FaqEntry { Question = item.Question, Answer = item.Answer }).ToList(),
+                Terms = hackathon.Terms,
+                SwagHtml = hackathon.SwagHtml,
+                Tracks = hackathon.Tracks.ToList(),
+                Awards = hackathon.Awards.ToList(),
+                JudgingCriteria = hackathon.JudgingCriteria.ToList(),
+                Milestones = hackathon.Milestones.ToList(),
+                LeaderboardBands = hackathon.LeaderboardBands is null
+                    ? null
+                    : new LeaderboardBandSettings
+                    {
+                        PlatinumMinPercentile = hackathon.LeaderboardBands.PlatinumMinPercentile,
+                        GoldMinPercentile = hackathon.LeaderboardBands.GoldMinPercentile,
+                        SilverMinPercentile = hackathon.LeaderboardBands.SilverMinPercentile
+                    },
+                CreatedAtUtc = hackathon.CreatedAtUtc,
+                UpdatedAtUtc = hackathon.UpdatedAtUtc
             };
         }
     }

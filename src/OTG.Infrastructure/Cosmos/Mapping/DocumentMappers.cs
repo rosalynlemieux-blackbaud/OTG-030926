@@ -52,6 +52,7 @@ internal static class DocumentMappers
         Awards = hackathon.Awards,
         JudgingCriteria = hackathon.JudgingCriteria,
         Milestones = hackathon.Milestones,
+        LeaderboardBands = hackathon.LeaderboardBands,
         CreatedAtUtc = hackathon.CreatedAtUtc,
         UpdatedAtUtc = hackathon.UpdatedAtUtc
     };
@@ -76,6 +77,7 @@ internal static class DocumentMappers
         Awards = document.Awards,
         JudgingCriteria = document.JudgingCriteria,
         Milestones = document.Milestones,
+        LeaderboardBands = document.LeaderboardBands,
         CreatedAtUtc = document.CreatedAtUtc,
         UpdatedAtUtc = document.UpdatedAtUtc
     };

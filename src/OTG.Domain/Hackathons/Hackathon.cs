@@ -21,10 +21,18 @@ public sealed class Hackathon : AuditableEntity
     public List<Award> Awards { get; set; } = [];
     public List<JudgingCriterion> JudgingCriteria { get; set; } = [];
     public List<Milestone> Milestones { get; set; } = [];
+    public LeaderboardBandSettings? LeaderboardBands { get; set; }
 }
 
 public sealed class FaqEntry
 {
     public required string Question { get; init; }
     public required string Answer { get; init; }
+}
+
+public sealed class LeaderboardBandSettings
+{
+    public decimal PlatinumMinPercentile { get; set; } = 90m;
+    public decimal GoldMinPercentile { get; set; } = 75m;
+    public decimal SilverMinPercentile { get; set; } = 50m;
 }

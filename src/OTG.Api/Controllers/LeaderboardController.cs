@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using OTG.Application.Abstractions.Repositories;
+using OTG.Domain.Hackathons;
 using OTG.Domain.Ideas;
 using System.Globalization;
 using System.Security.Cryptography;
@@ -15,6 +16,7 @@ namespace OTG.Api.Controllers;
 public sealed class LeaderboardController(
     IIdeaRepository ideaRepository,
     IRatingRepository ratingRepository,
+    IHackathonRepository hackathonRepository,
     IMemoryCache cache) : ControllerBase
 {
     [HttpGet("tracks")]
@@ -48,10 +50,11 @@ public sealed class LeaderboardController(
         }
 
         var ideas = await ideaRepository.SearchAsync(hackathonId, null, null, null, cancellationToken);
+        var bandSettings = await ResolveBandSettingsAsync(hackathonId, cancellationToken);
         var includeModerated = User.IsInRole("Admin");
         var leaderboard = await BuildLeaderboardItemsAsync(ideas, includeModerated, minRatingCount, confidencePivot, cancellationToken);
         var ordered = SortLeaderboardItems(leaderboard, normalizedSortMode);
-        var annotated = AnnotateRankAndDelta(ordered, normalizedSortMode);
+        var annotated = AnnotateRankAndDelta(ordered, normalizedSortMode, bandSettings);
 
         var tracks = annotated
             .GroupBy(item => item.TrackId ?? string.Empty, StringComparer.Ordinal)
@@ -59,7 +62,7 @@ public sealed class LeaderboardController(
             {
                 TrackId = string.IsNullOrWhiteSpace(group.Key) ? null : group.Key,
                 Total = group.Count(),
-                Items = AnnotateRankAndDelta(group.ToList(), normalizedSortMode).Take(perTrackLimit).ToList()
+                Items = AnnotateRankAndDelta(group.ToList(), normalizedSortMode, bandSettings).Take(perTrackLimit).ToList()
             })
             .OrderBy(item => item.TrackId ?? string.Empty, StringComparer.OrdinalIgnoreCase)
             .ToList();
@@ -70,6 +73,7 @@ public sealed class LeaderboardController(
             MinRatingCount = minRatingCount,
             SortMode = normalizedSortMode,
             ConfidencePivot = confidencePivot,
+            BandThresholds = BandThresholdMetadata.FromSettings(bandSettings),
             PerTrackLimit = perTrackLimit,
             Tracks = tracks
         });
@@ -113,14 +117,15 @@ public sealed class LeaderboardController(
         }
 
         var ideas = await ideaRepository.SearchAsync(hackathonId, null, trackId, null, cancellationToken);
+        var bandSettings = await ResolveBandSettingsAsync(hackathonId, cancellationToken);
         var includeModerated = User.IsInRole("Admin");
-        var cacheKey = BuildCacheKey(hackathonId, trackId, minRatingCount, normalizedSortMode, confidencePivot, includeModerated, offset, limit);
+        var cacheKey = BuildCacheKey(hackathonId, trackId, minRatingCount, normalizedSortMode, confidencePivot, includeModerated, offset, limit, bandSettings);
 
         if (!cache.TryGetValue(cacheKey, out LeaderboardResponsePayload? payload))
         {
             var leaderboard = await BuildLeaderboardItemsAsync(ideas, includeModerated, minRatingCount, confidencePivot, cancellationToken);
             var ordered = SortLeaderboardItems(leaderboard, normalizedSortMode);
-            var annotated = AnnotateRankAndDelta(ordered, normalizedSortMode);
+            var annotated = AnnotateRankAndDelta(ordered, normalizedSortMode, bandSettings);
 
             var paged = annotated
                 .Skip(offset)
@@ -134,11 +139,12 @@ public sealed class LeaderboardController(
                 MinRatingCount = minRatingCount,
                 SortMode = normalizedSortMode,
                 ConfidencePivot = confidencePivot,
+                BandThresholds = BandThresholdMetadata.FromSettings(bandSettings),
                 Total = annotated.Count,
                 Offset = offset,
                 Limit = limit,
                 Items = paged,
-                ETag = BuildEtag(hackathonId, trackId, minRatingCount, normalizedSortMode, confidencePivot, offset, limit, paged)
+                ETag = BuildEtag(hackathonId, trackId, minRatingCount, normalizedSortMode, confidencePivot, offset, limit, bandSettings, paged)
             };
 
             cache.Set(cacheKey, payload, new MemoryCacheEntryOptions
@@ -164,6 +170,7 @@ public sealed class LeaderboardController(
             payload.MinRatingCount,
             payload.SortMode,
             payload.ConfidencePivot,
+            payload.BandThresholds,
             payload.Total,
             payload.Offset,
             payload.Limit,
@@ -238,7 +245,7 @@ public sealed class LeaderboardController(
         };
     }
 
-    private static List<LeaderboardItem> AnnotateRankAndDelta(List<LeaderboardItem> ordered, string normalizedSortMode)
+    private static List<LeaderboardItem> AnnotateRankAndDelta(List<LeaderboardItem> ordered, string normalizedSortMode, LeaderboardBandSettings bandSettings)
     {
         if (ordered.Count == 0)
         {
@@ -252,21 +259,25 @@ public sealed class LeaderboardController(
             ordered[index].Rank = index + 1;
             ordered[index].DeltaFromTop = Math.Round(topMetric - currentMetric, 2, MidpointRounding.AwayFromZero);
             ordered[index].Percentile = CalculatePercentile(index + 1, ordered.Count);
-            ordered[index].Band = CalculateBand(ordered[index].Percentile);
+            ordered[index].Band = CalculateBand(ordered[index].Percentile, bandSettings);
         }
 
         return ordered;
     }
 
-    private static string CalculateBand(decimal percentile)
+    private static string CalculateBand(decimal percentile, LeaderboardBandSettings bandSettings)
     {
-        return percentile switch
+        if (percentile >= bandSettings.PlatinumMinPercentile)
         {
-            >= 90m => "platinum",
-            >= 75m => "gold",
-            >= 50m => "silver",
-            _ => "bronze"
-        };
+            return "platinum";
+        }
+
+        if (percentile >= bandSettings.GoldMinPercentile)
+        {
+            return "gold";
+        }
+
+        return percentile >= bandSettings.SilverMinPercentile ? "silver" : "bronze";
     }
 
     private static decimal CalculatePercentile(int rank, int total)
@@ -291,8 +302,17 @@ public sealed class LeaderboardController(
         };
     }
 
-    private static string BuildCacheKey(string hackathonId, string? trackId, int minRatingCount, string sortMode, decimal confidencePivot, bool includeModerated, int offset, int limit)
-        => $"leaderboard:{hackathonId}:{trackId ?? "*"}:{minRatingCount}:{sortMode}:{confidencePivot.ToString(CultureInfo.InvariantCulture)}:{includeModerated}:{offset}:{limit}";
+    private static string BuildCacheKey(
+        string hackathonId,
+        string? trackId,
+        int minRatingCount,
+        string sortMode,
+        decimal confidencePivot,
+        bool includeModerated,
+        int offset,
+        int limit,
+        LeaderboardBandSettings bandSettings)
+        => $"leaderboard:{hackathonId}:{trackId ?? "*"}:{minRatingCount}:{sortMode}:{confidencePivot.ToString(CultureInfo.InvariantCulture)}:{includeModerated}:{offset}:{limit}:{bandSettings.PlatinumMinPercentile.ToString(CultureInfo.InvariantCulture)}:{bandSettings.GoldMinPercentile.ToString(CultureInfo.InvariantCulture)}:{bandSettings.SilverMinPercentile.ToString(CultureInfo.InvariantCulture)}";
 
     private bool TryMatchIfNoneMatch(string etag)
     {
@@ -305,7 +325,16 @@ public sealed class LeaderboardController(
         return candidates.Any(candidate => string.Equals(candidate, etag, StringComparison.Ordinal) || candidate == "*");
     }
 
-    private static string BuildEtag(string hackathonId, string? trackId, int minRatingCount, string sortMode, decimal confidencePivot, int offset, int limit, IReadOnlyList<LeaderboardItem> items)
+    private static string BuildEtag(
+        string hackathonId,
+        string? trackId,
+        int minRatingCount,
+        string sortMode,
+        decimal confidencePivot,
+        int offset,
+        int limit,
+        LeaderboardBandSettings bandSettings,
+        IReadOnlyList<LeaderboardItem> items)
     {
         var canonical = new StringBuilder();
         canonical.Append(hackathonId).Append('|')
@@ -314,7 +343,10 @@ public sealed class LeaderboardController(
             .Append(sortMode).Append('|')
             .Append(confidencePivot.ToString(CultureInfo.InvariantCulture)).Append('|')
             .Append(offset).Append('|')
-            .Append(limit);
+            .Append(limit).Append('|')
+            .Append(bandSettings.PlatinumMinPercentile.ToString(CultureInfo.InvariantCulture)).Append('|')
+            .Append(bandSettings.GoldMinPercentile.ToString(CultureInfo.InvariantCulture)).Append('|')
+            .Append(bandSettings.SilverMinPercentile.ToString(CultureInfo.InvariantCulture));
 
         foreach (var item in items)
         {
@@ -334,6 +366,23 @@ public sealed class LeaderboardController(
         return $"\"{Convert.ToHexString(hashBytes)}\"";
     }
 
+    private async Task<LeaderboardBandSettings> ResolveBandSettingsAsync(string hackathonId, CancellationToken cancellationToken)
+    {
+        var hackathon = await hackathonRepository.GetByIdAsync(hackathonId, cancellationToken);
+        var settings = hackathon?.LeaderboardBands ?? new LeaderboardBandSettings();
+
+        if (settings.PlatinumMinPercentile > 100m
+            || settings.GoldMinPercentile < 0m
+            || settings.SilverMinPercentile < 0m
+            || settings.PlatinumMinPercentile < settings.GoldMinPercentile
+            || settings.GoldMinPercentile < settings.SilverMinPercentile)
+        {
+            throw new InvalidOperationException("Invalid leaderboard band thresholds configured for the selected hackathon.");
+        }
+
+        return settings;
+    }
+
     private sealed class LeaderboardResponsePayload
     {
         public required string HackathonId { get; init; }
@@ -341,6 +390,7 @@ public sealed class LeaderboardController(
         public int MinRatingCount { get; init; }
         public required string SortMode { get; init; }
         public decimal ConfidencePivot { get; init; }
+        public required BandThresholdMetadata BandThresholds { get; init; }
         public int Total { get; init; }
         public int Offset { get; init; }
         public int Limit { get; init; }
@@ -362,5 +412,19 @@ public sealed class LeaderboardController(
         public decimal DeltaFromTop { get; set; }
         public decimal Percentile { get; set; }
         public string Band { get; set; } = "bronze";
+    }
+
+    private sealed class BandThresholdMetadata
+    {
+        public decimal PlatinumMinPercentile { get; init; }
+        public decimal GoldMinPercentile { get; init; }
+        public decimal SilverMinPercentile { get; init; }
+
+        public static BandThresholdMetadata FromSettings(LeaderboardBandSettings settings) => new()
+        {
+            PlatinumMinPercentile = settings.PlatinumMinPercentile,
+            GoldMinPercentile = settings.GoldMinPercentile,
+            SilverMinPercentile = settings.SilverMinPercentile
+        };
     }
 }

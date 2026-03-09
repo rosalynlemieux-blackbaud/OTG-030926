@@ -21,6 +21,7 @@ public sealed class HackathonDocument : CosmosDocument
     public List<Award> Awards { get; init; } = [];
     public List<JudgingCriterion> JudgingCriteria { get; init; } = [];
     public List<Milestone> Milestones { get; init; } = [];
+    public LeaderboardBandSettings? LeaderboardBands { get; init; }
     public DateTimeOffset CreatedAtUtc { get; init; }
     public DateTimeOffset UpdatedAtUtc { get; init; }
 }

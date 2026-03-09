@@ -215,8 +215,13 @@ This plan is derived from `plan.md` and implemented as a phased baseline in this
    - Current thresholds: `platinum` (>=90), `gold` (>=75), `silver` (>=50), `bronze` (<50).
    - Band metadata included in overall and per-track leaderboard payloads.
 53. Band-label integration tests added:
-   - Verifies top and bottom band assignment in overall leaderboard assertions.
-   - Verifies top and bottom band assignment in per-track rollup assertions.
+    - Verifies top and bottom band assignment in overall leaderboard assertions.
+    - Verifies top and bottom band assignment in per-track rollup assertions.
+54. Hackathon-configurable leaderboard band thresholds implemented:
+    - Added optional `LeaderboardBands` settings on hackathon domain/persistence models.
+    - Leaderboard and per-track endpoints now apply configured percentile thresholds for band labels.
+    - Leaderboard response metadata now includes effective band-threshold values.
+    - Added integration coverage for configured-threshold band assignment.
 
 ## Implemented Frontend Steps
 1. Role and auth state models/services created.
