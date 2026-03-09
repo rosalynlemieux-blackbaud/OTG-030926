@@ -251,6 +251,18 @@ This plan is derived from `plan.md` and implemented as a phased baseline in this
 62. Frontend Angular workspace runtime bootstrap completed:
     - Added Angular workspace files under `frontend/` (`angular.json`, `package.json`, tsconfig files, `src/index.html`, `src/styles.css`, `public/favicon.ico`).
     - Updated project naming/config to `otg-frontend` to support local `npm`/`ng` build workflow.
+63. People directory slice implemented end-to-end:
+    - Added authenticated `GET /api/people` endpoint with query/limit support and profile-driven directory payloads.
+    - Added integration tests for people search and authentication enforcement.
+    - Added frontend `People` page with API-backed search and person cards; wired route and HTTP client provider.
+64. Full-stack validation after people slice:
+    - Backend test suite passes with expanded coverage for new people APIs and prior authorization/validation slices.
+    - Frontend Angular build passes after routing + HTTP client integration for the people page.
+65. Spark-an-Idea baseline implemented:
+    - Added `POST /api/ideas/spark` endpoint with multi-exchange conversation progression and draft idea auto-creation.
+    - Added spark service abstraction and in-memory conversation state for iterative ideation replies.
+    - Added integration tests for authenticated flow (draft creation after third exchange) and unauthorized access handling.
+    - Added dashboard spark panel trigger in frontend to call the API and navigate to generated idea detail route.
 
 ## Implemented Frontend Steps
 1. Role and auth state models/services created.

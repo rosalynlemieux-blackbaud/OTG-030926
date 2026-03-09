@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using OTG.Api.Authorization;
 using OTG.Api.Contracts;
 using OTG.Api.Extensions;
+using OTG.Api.Services;
 using OTG.Application.Abstractions.Repositories;
 using OTG.Domain.Ideas;
 
@@ -11,8 +12,69 @@ namespace OTG.Api.Controllers;
 [ApiController]
 [Route("api/ideas")]
 [Authorize(Policy = "NotBanned")]
-public sealed class IdeasController(IIdeaRepository ideaRepository, IAuthorizationService authorizationService) : ControllerBase
+public sealed class IdeasController(
+    IIdeaRepository ideaRepository,
+    IAuthorizationService authorizationService,
+    ISparkIdeaService sparkIdeaService) : ControllerBase
 {
+    [HttpPost("spark")]
+    public async Task<ActionResult<SparkIdeaResponse>> SparkIdea(SparkIdeaRequest request, CancellationToken cancellationToken)
+    {
+        var userId = User.GetUserId();
+        if (string.IsNullOrWhiteSpace(userId))
+        {
+            return Unauthorized();
+        }
+
+        if (string.IsNullOrWhiteSpace(request.HackathonId))
+        {
+            return BadRequest("HackathonId is required.");
+        }
+
+        if (string.IsNullOrWhiteSpace(request.Message))
+        {
+            return BadRequest("Message is required.");
+        }
+
+        var conversationId = string.IsNullOrWhiteSpace(request.ConversationId)
+            ? Guid.NewGuid().ToString("N")
+            : request.ConversationId.Trim();
+
+        var result = sparkIdeaService.Generate(conversationId, request.Message);
+        if (!result.ReadyToSubmit)
+        {
+            return Ok(new SparkIdeaResponse
+            {
+                ConversationId = conversationId,
+                Reply = result.Reply,
+                ReadyToSubmit = false
+            });
+        }
+
+        var idea = new Idea
+        {
+            Id = Guid.NewGuid().ToString("N"),
+            HackathonId = request.HackathonId,
+            Title = result.Title ?? "New Spark Idea",
+            Description = result.Description ?? request.Message.Trim(),
+            Status = IdeaStatus.Draft,
+            AuthorId = userId,
+            TermsAccepted = false,
+            UpdatedAtUtc = DateTimeOffset.UtcNow
+        };
+
+        await ideaRepository.UpsertAsync(idea, cancellationToken);
+        return Ok(new SparkIdeaResponse
+        {
+            ConversationId = conversationId,
+            Reply = result.Reply,
+            ReadyToSubmit = true,
+            IdeaId = idea.Id,
+            Title = idea.Title,
+            Description = idea.Description
+        });
+    }
+
     [HttpGet]
     public async Task<ActionResult<IReadOnlyList<Idea>>> Search(
         [FromQuery] string hackathonId,

@@ -20,6 +20,7 @@ builder.Services.Configure<BlackbaudOptions>(builder.Configuration.GetSection(Bl
 builder.Services.AddMemoryCache();
 builder.Services.AddSingleton<IPasswordHasher, Pbkdf2PasswordHasher>();
 builder.Services.AddSingleton<ITokenService, JwtTokenService>();
+builder.Services.AddSingleton<ISparkIdeaService, SparkIdeaService>();
 builder.Services.AddSingleton<IBlackbaudStateStore, BlackbaudStateStore>();
 builder.Services.AddHttpClient<IBlackbaudOAuthService, BlackbaudOAuthService>();
 builder.Services.AddScoped<IAuthorizationHandler, NotBannedHandler>();
