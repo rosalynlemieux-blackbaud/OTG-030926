@@ -1,0 +1,6 @@
+{
+  "OTG.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/rosalyn.lemieux\/OTG-SPA\/OTG-spa\/src\/OTG.Api",
+  "OTG.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/rosalyn.lemieux\/OTG-SPA\/OTG-spa\/src\/OTG.Application",
+  "OTG.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/rosalyn.lemieux\/OTG-SPA\/OTG-spa\/src\/OTG.Domain",
+  "OTG.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/rosalyn.lemieux\/OTG-SPA\/OTG-spa\/src\/OTG.Infrastructure"
+}

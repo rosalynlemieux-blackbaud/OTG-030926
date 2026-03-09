@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/OTG.Api/OTG.Api.csproj" />
+    <Project Path="src/OTG.Application/OTG.Application.csproj" />
+    <Project Path="src/OTG.Domain/OTG.Domain.csproj" />
+    <Project Path="src/OTG.Infrastructure/OTG.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/OTG.IntegrationTests/OTG.IntegrationTests.csproj" />
+    <Project Path="tests/OTG.UnitTests/OTG.UnitTests.csproj" />
+  </Folder>
+</Solution>

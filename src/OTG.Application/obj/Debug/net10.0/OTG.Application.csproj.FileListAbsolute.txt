@@ -1,0 +1,16 @@
+/Users/rosalyn.lemieux/OTG-SPA/OTG-spa/src/OTG.Application/bin/Debug/net10.0/OTG.Application.deps.json
+/Users/rosalyn.lemieux/OTG-SPA/OTG-spa/src/OTG.Application/bin/Debug/net10.0/OTG.Application.dll
+/Users/rosalyn.lemieux/OTG-SPA/OTG-spa/src/OTG.Application/bin/Debug/net10.0/OTG.Application.pdb
+/Users/rosalyn.lemieux/OTG-SPA/OTG-spa/src/OTG.Application/bin/Debug/net10.0/OTG.Domain.dll
+/Users/rosalyn.lemieux/OTG-SPA/OTG-spa/src/OTG.Application/bin/Debug/net10.0/OTG.Domain.pdb
+/Users/rosalyn.lemieux/OTG-SPA/OTG-spa/src/OTG.Application/obj/Debug/net10.0/OTG.Application.csproj.AssemblyReference.cache
+/Users/rosalyn.lemieux/OTG-SPA/OTG-spa/src/OTG.Application/obj/Debug/net10.0/OTG.Application.GeneratedMSBuildEditorConfig.editorconfig
+/Users/rosalyn.lemieux/OTG-SPA/OTG-spa/src/OTG.Application/obj/Debug/net10.0/OTG.Application.AssemblyInfoInputs.cache
+/Users/rosalyn.lemieux/OTG-SPA/OTG-spa/src/OTG.Application/obj/Debug/net10.0/OTG.Application.AssemblyInfo.cs
+/Users/rosalyn.lemieux/OTG-SPA/OTG-spa/src/OTG.Application/obj/Debug/net10.0/OTG.Application.csproj.CoreCompileInputs.cache
+/Users/rosalyn.lemieux/OTG-SPA/OTG-spa/src/OTG.Application/obj/Debug/net10.0/OTG.Application.sourcelink.json
+/Users/rosalyn.lemieux/OTG-SPA/OTG-spa/src/OTG.Application/obj/Debug/net10.0/OTG.Appl.6EE28E38.Up2Date
+/Users/rosalyn.lemieux/OTG-SPA/OTG-spa/src/OTG.Application/obj/Debug/net10.0/OTG.Application.dll
+/Users/rosalyn.lemieux/OTG-SPA/OTG-spa/src/OTG.Application/obj/Debug/net10.0/refint/OTG.Application.dll
+/Users/rosalyn.lemieux/OTG-SPA/OTG-spa/src/OTG.Application/obj/Debug/net10.0/OTG.Application.pdb
+/Users/rosalyn.lemieux/OTG-SPA/OTG-spa/src/OTG.Application/obj/Debug/net10.0/ref/OTG.Application.dll

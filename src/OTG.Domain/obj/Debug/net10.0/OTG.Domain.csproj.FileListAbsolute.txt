@@ -1,0 +1,12 @@
+/Users/rosalyn.lemieux/OTG-SPA/OTG-spa/src/OTG.Domain/bin/Debug/net10.0/OTG.Domain.deps.json
+/Users/rosalyn.lemieux/OTG-SPA/OTG-spa/src/OTG.Domain/bin/Debug/net10.0/OTG.Domain.dll
+/Users/rosalyn.lemieux/OTG-SPA/OTG-spa/src/OTG.Domain/bin/Debug/net10.0/OTG.Domain.pdb
+/Users/rosalyn.lemieux/OTG-SPA/OTG-spa/src/OTG.Domain/obj/Debug/net10.0/OTG.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/rosalyn.lemieux/OTG-SPA/OTG-spa/src/OTG.Domain/obj/Debug/net10.0/OTG.Domain.AssemblyInfoInputs.cache
+/Users/rosalyn.lemieux/OTG-SPA/OTG-spa/src/OTG.Domain/obj/Debug/net10.0/OTG.Domain.AssemblyInfo.cs
+/Users/rosalyn.lemieux/OTG-SPA/OTG-spa/src/OTG.Domain/obj/Debug/net10.0/OTG.Domain.csproj.CoreCompileInputs.cache
+/Users/rosalyn.lemieux/OTG-SPA/OTG-spa/src/OTG.Domain/obj/Debug/net10.0/OTG.Domain.sourcelink.json
+/Users/rosalyn.lemieux/OTG-SPA/OTG-spa/src/OTG.Domain/obj/Debug/net10.0/OTG.Domain.dll
+/Users/rosalyn.lemieux/OTG-SPA/OTG-spa/src/OTG.Domain/obj/Debug/net10.0/refint/OTG.Domain.dll
+/Users/rosalyn.lemieux/OTG-SPA/OTG-spa/src/OTG.Domain/obj/Debug/net10.0/OTG.Domain.pdb
+/Users/rosalyn.lemieux/OTG-SPA/OTG-spa/src/OTG.Domain/obj/Debug/net10.0/ref/OTG.Domain.dll

@@ -1,0 +1,33 @@
+{
+  "version": 2,
+  "dgSpecHash": "4fvQWEWfKFE=",
+  "success": true,
+  "projectFilePath": "/workspaces/OTG-030926/src/OTG.Infrastructure/OTG.Infrastructure.csproj",
+  "expectedPackageFiles": [
+    "/home/codespace/.nuget/packages/azure.core/1.44.1/azure.core.1.44.1.nupkg.sha512",
+    "/home/codespace/.nuget/packages/microsoft.azure.cosmos/3.57.1/microsoft.azure.cosmos.3.57.1.nupkg.sha512",
+    "/home/codespace/.nuget/packages/microsoft.bcl.asyncinterfaces/6.0.0/microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",
+    "/home/codespace/.nuget/packages/microsoft.bcl.hashcode/1.1.0/microsoft.bcl.hashcode.1.1.0.nupkg.sha512",
+    "/home/codespace/.nuget/packages/microsoft.extensions.configuration/10.0.3/microsoft.extensions.configuration.10.0.3.nupkg.sha512",
+    "/home/codespace/.nuget/packages/microsoft.extensions.configuration.abstractions/10.0.3/microsoft.extensions.configuration.abstractions.10.0.3.nupkg.sha512",
+    "/home/codespace/.nuget/packages/microsoft.extensions.configuration.binder/10.0.3/microsoft.extensions.configuration.binder.10.0.3.nupkg.sha512",
+    "/home/codespace/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/10.0.3/microsoft.extensions.dependencyinjection.abstractions.10.0.3.nupkg.sha512",
+    "/home/codespace/.nuget/packages/microsoft.extensions.diagnostics.abstractions/10.0.3/microsoft.extensions.diagnostics.abstractions.10.0.3.nupkg.sha512",
+    "/home/codespace/.nuget/packages/microsoft.extensions.fileproviders.abstractions/10.0.3/microsoft.extensions.fileproviders.abstractions.10.0.3.nupkg.sha512",
+    "/home/codespace/.nuget/packages/microsoft.extensions.hosting.abstractions/10.0.3/microsoft.extensions.hosting.abstractions.10.0.3.nupkg.sha512",
+    "/home/codespace/.nuget/packages/microsoft.extensions.logging.abstractions/10.0.3/microsoft.extensions.logging.abstractions.10.0.3.nupkg.sha512",
+    "/home/codespace/.nuget/packages/microsoft.extensions.options/10.0.3/microsoft.extensions.options.10.0.3.nupkg.sha512",
+    "/home/codespace/.nuget/packages/microsoft.extensions.options.configurationextensions/10.0.3/microsoft.extensions.options.configurationextensions.10.0.3.nupkg.sha512",
+    "/home/codespace/.nuget/packages/microsoft.extensions.primitives/10.0.3/microsoft.extensions.primitives.10.0.3.nupkg.sha512",
+    "/home/codespace/.nuget/packages/microsoft.win32.systemevents/6.0.0/microsoft.win32.systemevents.6.0.0.nupkg.sha512",
+    "/home/codespace/.nuget/packages/newtonsoft.json/13.0.4/newtonsoft.json.13.0.4.nupkg.sha512",
+    "/home/codespace/.nuget/packages/system.clientmodel/1.1.0/system.clientmodel.1.1.0.nupkg.sha512",
+    "/home/codespace/.nuget/packages/system.configuration.configurationmanager/6.0.0/system.configuration.configurationmanager.6.0.0.nupkg.sha512",
+    "/home/codespace/.nuget/packages/system.drawing.common/6.0.0/system.drawing.common.6.0.0.nupkg.sha512",
+    "/home/codespace/.nuget/packages/system.memory.data/6.0.0/system.memory.data.6.0.0.nupkg.sha512",
+    "/home/codespace/.nuget/packages/system.security.cryptography.protecteddata/6.0.0/system.security.cryptography.protecteddata.6.0.0.nupkg.sha512",
+    "/home/codespace/.nuget/packages/system.security.permissions/6.0.0/system.security.permissions.6.0.0.nupkg.sha512",
+    "/home/codespace/.nuget/packages/system.windows.extensions/6.0.0/system.windows.extensions.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

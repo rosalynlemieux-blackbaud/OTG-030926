@@ -1,0 +1,6 @@
+@OTG.Api_HostAddress = http://localhost:5200
+
+GET {{OTG.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
