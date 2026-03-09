@@ -230,6 +230,9 @@ This plan is derived from `plan.md` and implemented as a phased baseline in this
     - Added `IdeaOwnerOrAdminRequirement` and `TeamLeaderOrAdminRequirement` handlers.
     - Wired handlers into DI and applied `IAuthorizationService` checks in ideas/teams upsert update paths.
     - Added unit tests for owner/leader success and non-owner/non-leader denial paths.
+57. Team workflow resource-authorization alignment implemented:
+    - Replaced inline leader/admin checks with `IAuthorizationService` + `TeamLeaderOrAdminRequirement` in team workflow endpoints.
+    - Added integration coverage ensuring non-leader participants are forbidden from reading team join requests.
 
 ## Implemented Frontend Steps
 1. Role and auth state models/services created.

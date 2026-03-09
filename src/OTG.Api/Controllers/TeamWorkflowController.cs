@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using OTG.Api.Authorization;
 using OTG.Api.Contracts;
 using OTG.Api.Extensions;
 using OTG.Application.Abstractions.Repositories;
@@ -14,7 +15,8 @@ public sealed class TeamWorkflowController(
     ITeamRepository teamRepository,
     ITeamJoinRequestRepository joinRequestRepository,
     ITeamInviteRepository inviteRepository,
-    IUserRepository userRepository) : ControllerBase
+    IUserRepository userRepository,
+    IAuthorizationService authorizationService) : ControllerBase
 {
     [HttpPost("join-requests")]
     public async Task<ActionResult<TeamJoinRequest>> CreateJoinRequest(string teamId, [FromQuery] string hackathonId, CreateJoinRequestRequest request, CancellationToken cancellationToken)
@@ -71,7 +73,7 @@ public sealed class TeamWorkflowController(
             return NotFound();
         }
 
-        if (!IsLeaderOrAdmin(team, userId))
+        if (!await CanManageTeamAsync(team))
         {
             return Forbid();
         }
@@ -95,7 +97,7 @@ public sealed class TeamWorkflowController(
             return NotFound();
         }
 
-        if (!IsLeaderOrAdmin(team, userId))
+        if (!await CanManageTeamAsync(team))
         {
             return Forbid();
         }
@@ -146,7 +148,7 @@ public sealed class TeamWorkflowController(
             return NotFound();
         }
 
-        if (!IsLeaderOrAdmin(team, userId))
+        if (!await CanManageTeamAsync(team))
         {
             return Forbid();
         }
@@ -180,7 +182,7 @@ public sealed class TeamWorkflowController(
             return NotFound();
         }
 
-        if (!IsLeaderOrAdmin(team, userId))
+        if (!await CanManageTeamAsync(team))
         {
             return Forbid();
         }
@@ -222,7 +224,7 @@ public sealed class TeamWorkflowController(
             return NotFound();
         }
 
-        if (!IsLeaderOrAdmin(team, userId))
+        if (!await CanManageTeamAsync(team))
         {
             return Forbid();
         }
@@ -246,7 +248,7 @@ public sealed class TeamWorkflowController(
             return NotFound();
         }
 
-        if (!IsLeaderOrAdmin(team, userId))
+        if (!await CanManageTeamAsync(team))
         {
             return Forbid();
         }
@@ -333,8 +335,9 @@ public sealed class TeamWorkflowController(
         return Ok(invite);
     }
 
-    private bool IsLeaderOrAdmin(Team team, string userId)
+    private async Task<bool> CanManageTeamAsync(Team team)
     {
-        return string.Equals(team.LeaderId, userId, StringComparison.Ordinal) || User.IsInRole("Admin");
+        var result = await authorizationService.AuthorizeAsync(User, team, new TeamLeaderOrAdminRequirement());
+        return result.Succeeded;
     }
 }

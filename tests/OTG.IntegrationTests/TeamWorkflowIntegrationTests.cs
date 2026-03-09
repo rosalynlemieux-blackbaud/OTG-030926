@@ -68,6 +68,22 @@ public sealed class TeamWorkflowIntegrationTests
     }
 
     [Fact]
+    public async Task GetJoinRequests_ReturnsForbidden_ForNonLeaderParticipant()
+    {
+        await using var factory = new TestApiFactory();
+        var leader = factory.SeedUser("leader-read@example.com", UserRole.Participant);
+        var otherParticipant = factory.SeedUser("other-read@example.com", UserRole.Participant);
+        var team = factory.SeedTeam("hack-read", "team-read", leader.Id, maxSize: 3, members: [leader.Id]);
+
+        var client = factory.CreateClient(new WebApplicationFactoryClientOptions { AllowAutoRedirect = false });
+        AddAuthHeaders(client, otherParticipant.Id, otherParticipant.Email, "Participant");
+
+        var response = await client.GetAsync($"/api/teams/{team.Id}/join-requests?hackathonId={team.HackathonId}");
+
+        Assert.Equal(HttpStatusCode.Forbidden, response.StatusCode);
+    }
+
+    [Fact]
     public async Task AcceptInvite_RequiresApproval_WhenInviteNeedsApproval()
     {
         await using var factory = new TestApiFactory();
